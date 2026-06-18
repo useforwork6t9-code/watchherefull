@@ -1,119 +1,299 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Watch Here Full</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VideoTube6t9 - Premium Video Content</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Styles */
+        :root {
+            --primary-color: #ff0000;
+            --bg-color: #0f0f0f;
+            --card-bg: #1e1e1e;
+            --text-color: #ffffff;
+            --accent-color: #3ea6ff;
+        }
 
-<style>
-body {
-    margin: 0;
-    background: #111;
-    color: white;
-    font-family: Arial;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
-.header {
-    background: #222;
-    padding: 20px;
-    text-align: center;
-}
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
 
-.logo {
-    font-size: 30px;
-    font-weight: bold;
-    color: orange;
-}
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(0, 0, 0, 0.9);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-.search {
-    margin-top: 15px;
-    padding: 10px;
-    width: 70%;
-    border-radius: 5px;
-    border: none;
-}
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
 
-.category {
-    padding: 15px;
-    text-align: center;
-}
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
 
-.category button {
-    background: orange;
-    border: none;
-    padding: 10px 15px;
-    margin: 5px;
-    border-radius: 5px;
-}
+        .nav-links li {
+            margin-left: 25px;
+        }
 
-.gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 400;
+            transition: 0.3s;
+        }
 
-.card {
-    width: 250px;
-    background: #222;
-    margin: 10px;
-    padding: 10px;
-    border-radius: 10px;
-}
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
 
-.card img {
-    width: 100%;
-    border-radius: 8px;
-}
+        /* Hero Section */
+        .hero {
+            height: 60vh;
+            background: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.3)), 
+                        url('https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0 8%;
+        }
 
-.card:hover {
-    transform: scale(1.05);
-    transition: 0.3s;
-}
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
 
-.title {
-    padding: 10px;
-}
-</style>
+        .hero p {
+            max-width: 600px;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #ccc;
+        }
 
+        /* Video Section */
+        .video-section {
+            padding: 50px 5%;
+        }
+
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 15px;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        /* Video Card */
+        .video-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .video-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .thumbnail {
+            width: 100%;
+            height: 180px;
+            background: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .video-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .watch-btn {
+            display: inline-block;
+            width: 100%;
+            padding: 10px;
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .watch-btn:hover {
+            background: #cc0000;
+        }
+
+        .watch-btn.clicked {
+            background: #555;
+            cursor: not-allowed;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: #000;
+            margin-top: 50px;
+            border-top: 1px solid #222;
+        }
+
+        footer p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .nav-links { display: none; }
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="header">
-<div class="logo">Watch Here Full</div>
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">VideoTube6t9</div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Trending</a></li>
+            <li><a href="#">Movies</a></li>
+            <li><a href="#">Subscription</a></li>
+        </ul>
+    </nav>
 
-<input class="search" placeholder="Search videos...">
+    <!-- Hero Section -->
+    <header class="hero">
+        <h1>Exclusive Content Awaits</h1>
+        <p>Watch the latest and most trending videos from around the world. High quality, zero buffering.</p>
+    </header>
 
-</div>
+    <!-- Video Grid Section -->
+    <section class="video-section">
+        <h2 class="section-title">Featured Videos</h2>
+        
+        <div class="video-grid">
+            <!-- Video Card 1 -->
+            <div class="video-card">
+                <div class="thumbnail">
+                    <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=500&q=60" alt="Thumbnail">
+                </div>
+                <div class="card-content">
+                    <div class="video-title">The Future of AI Technology</div>
+                    <button class="watch-btn" onclick="openVideo(this, 'https://www.youtube.com/watch?v=dQw4w9WgXcQ')">Watch Now</button>
+                </div>
+            </div>
 
+            <!-- Video Card 2 -->
+            <div class="video-card">
+                <div class="thumbnail">
+                    <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=500&q=60" alt="Thumbnail">
+                </div>
+                <div class="card-content">
+                    <div class="video-title">Cinematic Travel Vlog 2024</div>
+                    <button class="watch-btn" onclick="openVideo(this, 'https://www.youtube.com/watch?v=dQw4w9WgXcQ')">Watch Now</button>
+                </div>
+            </div>
 
-<div class="category">
-<button>Latest</button>
-<button>Popular</button>
-<button>Trending</button>
-</div>
+            <!-- Video Card 3 -->
+            <div class="video-card">
+                <div class="thumbnail">
+                    <img src="https://images.unsplash.com/photo-1492691523567-6119e289df3a?auto=format&fit=crop&w=500&q=60" alt="Thumbnail">
+                </div>
+                <div class="card-content">
+                    <div class="video-title">Top 10 Coding Tips</div>
+                    <button class="watch-btn" onclick="openVideo(this, 'https://www.youtube.com/watch?v=dQw4w9WgXcQ')">Watch Now</button>
+                </div>
+            </div>
 
+            <!-- Video Card 4 -->
+            <div class="video-card">
+                <div class="thumbnail">
+                    <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=500&q=60" alt="Thumbnail">
+                </div>
+                <div class="card-content">
+                    <div class="video-title">Epic Movie Trailer</div>
+                    <button class="watch-btn" onclick="openVideo(this, 'https://www.youtube.com/watch?v=dQw4w9WgXcQ')">Watch Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<div class="gallery">
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 VideoTube6t9. All Rights Reserved.</p>
+    </footer>
 
-<div class="card">
-<img src="photo_2026-06-08_01-25-17.jpg">
-<div class="title"> WATCH </div>
-</div>
+    <!-- JavaScript Logic -->
+    <script>
+        function openVideo(button, videoUrl) {
+            // Check if already clicked
+            if (button.classList.contains('clicked')) {
+                alert("You have already clicked this video link.");
+                return;
+            }
 
+            // Redirect to video URL
+            window.open(videoUrl, '_blank');
 
-<div class="card">
-<img src="photo_2026-06-07_02-28-59.jpg">
-<div class="title">WATCH</div>
-</div>
-<div class="card">
-<img src="preview.mp4.jpg" width="400" height="250">
-<div class="title">WATCH</div>
-</div>
-
-</div>
-
-</div>
-</div>
-</div>
+            // Set state so it can't be clicked again for the same link
+            button.innerHTML = "Link Opened";
+            button.classList.add('clicked');
+            button.style.backgroundColor = "#444";
+            button.disabled = true;
+        }
+    </script>
 
 </body>
 </html>
