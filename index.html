@@ -56,10 +56,8 @@
             color: #ff0000;
         }
 
-        /* ===== হিরো সেকশন (খুব কমপ্যাক্ট) ===== */
         .hero {
             min-height: 28vh;
-            /* আগের থেকে কম */
             background: linear-gradient(135deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.5)),
                 url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
@@ -69,7 +67,6 @@
             justify-content: center;
             align-items: flex-start;
             padding: 20px 6% 24px;
-            /* উপরে-নিচে কম */
             border-bottom: 2px solid #222;
         }
 
@@ -85,10 +82,8 @@
             color: #d0d0d0;
             font-weight: 300;
             margin-bottom: 12px;
-            /* গ্যাপ কম */
         }
 
-        /* ===== সার্চ বক্স ===== */
         .search-container {
             width: 100%;
             max-width: 480px;
@@ -101,7 +96,6 @@
             border: 2px solid #333;
             border-radius: 50px;
             padding: 2px 4px 2px 18px;
-            /* padding কম */
             transition: border-color 0.3s, box-shadow 0.3s;
             backdrop-filter: blur(6px);
         }
@@ -119,13 +113,11 @@
             color: #fff;
             font-size: 0.9rem;
             padding: 10px 0;
-            /* padding কম */
             font-weight: 300;
         }
 
         .search-box input::placeholder {
             color: #888;
-            font-weight: 300;
         }
 
         .search-box button {
@@ -133,7 +125,6 @@
             border: none;
             border-radius: 50px;
             padding: 8px 20px;
-            /* padding কম */
             color: #fff;
             font-weight: 600;
             font-size: 0.8rem;
@@ -156,9 +147,8 @@
             fill: currentColor;
         }
 
-        /* ===== ভিডিও সেকশন ===== */
         .video-section {
-            padding: 30px 5% 50px;
+            padding: 30px 5% 20px;
             max-width: 900px;
             margin: 0 auto;
         }
@@ -281,11 +271,57 @@
             display: inline-block;
         }
 
+        /* ===== পেজিনেশন ===== */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin: 30px 0 20px;
+            padding: 10px 0;
+        }
+
+        .pagination button {
+            background: transparent;
+            border: 1px solid #333;
+            color: #aaa;
+            padding: 6px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.25s;
+            font-weight: 500;
+        }
+
+        .pagination button:hover {
+            background: #ff0000;
+            color: #fff;
+            border-color: #ff0000;
+        }
+
+        .pagination button.active {
+            background: #ff0000;
+            color: #fff;
+            border-color: #ff0000;
+        }
+
+        .pagination button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .pagination .dots {
+            color: #555;
+            padding: 0 4px;
+            font-size: 0.9rem;
+        }
+
         /* ===== অ্যানিমেশন ===== */
         .video-card {
             opacity: 0;
             transform: translateY(30px);
-            animation: fadeInUp 0.6s forwards;
+            animation: fadeInUp 0.5s forwards;
         }
 
         @keyframes fadeInUp {
@@ -296,42 +332,22 @@
         }
 
         .video-card:nth-child(1) { animation-delay: 0.05s; }
-        .video-card:nth-child(2) { animation-delay: 0.10s; }
-        .video-card:nth-child(3) { animation-delay: 0.15s; }
-        .video-card:nth-child(4) { animation-delay: 0.20s; }
-        .video-card:nth-child(5) { animation-delay: 0.25s; }
-        .video-card:nth-child(6) { animation-delay: 0.30s; }
-        .video-card:nth-child(7) { animation-delay: 0.35s; }
-        .video-card:nth-child(8) { animation-delay: 0.40s; }
-        .video-card:nth-child(9) { animation-delay: 0.45s; }
-        .video-card:nth-child(10) { animation-delay: 0.50s; }
-        .video-card:nth-child(11) { animation-delay: 0.55s; }
-        .video-card:nth-child(12) { animation-delay: 0.60s; }
-        .video-card:nth-child(13) { animation-delay: 0.65s; }
-        .video-card:nth-child(14) { animation-delay: 0.70s; }
-        .video-card:nth-child(15) { animation-delay: 0.75s; }
-        .video-card:nth-child(16) { animation-delay: 0.80s; }
-        .video-card:nth-child(17) { animation-delay: 0.85s; }
-        .video-card:nth-child(18) { animation-delay: 0.90s; }
-        .video-card:nth-child(19) { animation-delay: 0.95s; }
-        .video-card:nth-child(20) { animation-delay: 1.00s; }
-        .video-card:nth-child(21) { animation-delay: 1.05s; }
-        .video-card:nth-child(22) { animation-delay: 1.10s; }
-        .video-card:nth-child(23) { animation-delay: 1.15s; }
-        .video-card:nth-child(24) { animation-delay: 1.20s; }
-        .video-card:nth-child(25) { animation-delay: 1.25s; }
-        .video-card:nth-child(26) { animation-delay: 1.30s; }
-        .video-card:nth-child(27) { animation-delay: 1.35s; }
-        .video-card:nth-child(28) { animation-delay: 1.40s; }
-        .video-card:nth-child(29) { animation-delay: 1.45s; }
-        .video-card:nth-child(30) { animation-delay: 1.50s; }
+        .video-card:nth-child(2) { animation-delay: 0.08s; }
+        .video-card:nth-child(3) { animation-delay: 0.11s; }
+        .video-card:nth-child(4) { animation-delay: 0.14s; }
+        .video-card:nth-child(5) { animation-delay: 0.17s; }
+        .video-card:nth-child(6) { animation-delay: 0.20s; }
+        .video-card:nth-child(7) { animation-delay: 0.23s; }
+        .video-card:nth-child(8) { animation-delay: 0.26s; }
+        .video-card:nth-child(9) { animation-delay: 0.29s; }
+        .video-card:nth-child(10) { animation-delay: 0.32s; }
 
         footer {
             text-align: center;
-            padding: 30px 20px;
+            padding: 20px 20px;
             background: #0a0a0a;
             border-top: 1px solid #1a1a1a;
-            margin-top: 20px;
+            margin-top: 10px;
         }
 
         footer p {
@@ -346,53 +362,47 @@
             .logo {
                 font-size: 18px;
             }
-
             .hero {
                 min-height: 22vh;
                 padding: 16px 5% 18px;
             }
-
             .hero h1 {
                 font-size: 1.2rem;
             }
-
             .hero p {
                 font-size: 0.8rem;
                 margin-bottom: 8px;
             }
-
             .search-box {
                 padding: 2px 4px 2px 14px;
             }
-
             .search-box input {
                 font-size: 0.8rem;
                 padding: 8px 0;
             }
-
             .search-box button {
                 padding: 6px 14px;
                 font-size: 0.7rem;
             }
-
             .card-content {
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 4px;
             }
-
             .video-meta {
                 font-size: 0.7rem;
             }
-
             .play-btn {
                 width: 55px;
                 height: 55px;
             }
-
             .play-btn svg {
                 width: 28px;
                 height: 28px;
+            }
+            .pagination button {
+                padding: 4px 10px;
+                font-size: 0.75rem;
             }
         }
     </style>
@@ -412,7 +422,6 @@
         <h1>🎬 Find Your Favorite Videos</h1>
         <p>Search and watch the latest trending videos from around the world.</p>
 
-        <!-- ===== সার্চ বক্স ===== -->
         <div class="search-container">
             <div class="search-box">
                 <input type="text" id="searchInput" placeholder="Search videos..." />
@@ -430,6 +439,9 @@
         <div class="video-grid" id="videoGrid">
             <!-- JavaScript দিয়ে ভিডিও লোড হবে -->
         </div>
+
+        <!-- ===== পেজিনেশন ===== -->
+        <div class="pagination" id="pagination"></div>
     </section>
 
     <footer>
@@ -443,52 +455,111 @@
         const REDIRECT_URL = 'https://cricketequipped.com/nxzkfasdqd?key=36188c99c0188ff383d08ff6537503ae';
 
         // ================================================
-        // 📌 ৩০টি ভিডিওর ডেটা
+        // 📌 ৫৩টি ভিডিওর ডেটা (বেশি করে)
         // ================================================
-        const videos = [
-            { id: '9bZkp7q19f0', title: 'PSY - Gangnam Style', views: '4.8B views' },
-            { id: 'JGwWNGJdvx8', title: 'Ed Sheeran - Shape of You', views: '6.2B views' },
-            { id: 'RgKAFK5djSk', title: 'Wiz Khalifa - See You Again', views: '6.0B views' },
-            { id: 'XqZsoesa55w', title: 'Maroon 5 - Sugar', views: '4.1B views' },
-            { id: 'dQw4w9WgXcQ', title: 'Rick Astley - Never Gonna Give You Up', views: '1.8B views' },
-            { id: 'z_HXoI-UAeU', title: 'AI Technology Explained', views: '2.3M views' },
-            { id: 'VuOeefClQQY', title: 'Cinematic Travel Vlog 2024', views: '1.5M views' },
-            { id: 's-vX_Ojn-10', title: 'Top 10 Coding Tips', views: '4.2M views' },
-            { id: 'fJ9rUzIMcZQ', title: 'Queen - Bohemian Rhapsody', views: '2.1B views' },
-            { id: 'k4V3Mo61fJM', title: 'Michael Jackson - Thriller', views: '1.3B views' },
-            { id: 'OPf0YbXqDm0', title: 'Eminem - Lose Yourself', views: '1.7B views' },
-            { id: 'hT_nvWreIhg', title: 'Beyoncé - Halo', views: '1.2B views' },
-            { id: 'ktvTqknDobU', title: 'Adele - Hello', views: '3.1B views' },
-            { id: 'YQHsXMglC9A', title: 'Coldplay - Viva La Vida', views: '2.2B views' },
-            { id: 'nfs8NYg7yQM', title: 'Imagine Dragons - Believer', views: '3.4B views' },
-            { id: 'CevxZvSJLk8', title: 'The Weeknd - Blinding Lights', views: '3.9B views' },
-            { id: 'TgOu00Mf3kI', title: 'Dua Lipa - Levitating', views: '2.7B views' },
-            { id: 'kJQP7kiw5Fk', title: 'Luis Fonsi - Despacito', views: '8.3B views' },
-            { id: 'fLexgOxsZu0', title: 'Justin Bieber - Sorry', views: '3.3B views' },
-            { id: 'L_jWHffIx5E', title: 'Taylor Swift - Shake It Off', views: '3.5B views' },
-            { id: 'H6B2H9xqo0A', title: 'Amazing Nature 4K', views: '1.8M views' },
-            { id: 'b8C9g1P0zLg', title: 'Top 5 Gadgets 2024', views: '2.1M views' },
-            { id: 'KjN3V8mF9Gc', title: 'Learn Python in 10 Minutes', views: '3.4M views' },
-            { id: 'QpR5qY7zT2w', title: 'Epic Gaming Highlights', views: '5.6M views' },
-            { id: 'Xr9nFgH2jKl', title: 'Street Food Around the World', views: '4.2M views' },
-            { id: 'MnBvCzXwQpR', title: 'SpaceX Starship Launch', views: '8.9M views' },
-            { id: 'LkMnBvCzXwQ', title: 'Best Phone Under 20000', views: '1.2M views' },
-            { id: 'ZxYwVuTsRqP', title: 'How to Start a YouTube Channel', views: '2.8M views' },
-            { id: 'OqPtYsWvXzN', title: 'Funny Animal Compilation', views: '15.6M views' },
-            { id: 'MkLpOqRtYwX', title: 'Top 10 Movies of All Time', views: '3.1M views' }
+        const allVideos = [
+            { id: '9bZkp7q19f0', title: 'PSY - Gangnam Style' },
+            { id: 'JGwWNGJdvx8', title: 'Ed Sheeran - Shape of You' },
+            { id: 'RgKAFK5djSk', title: 'Wiz Khalifa - See You Again' },
+            { id: 'XqZsoesa55w', title: 'Maroon 5 - Sugar' },
+            { id: 'dQw4w9WgXcQ', title: 'Rick Astley - Never Gonna Give You Up' },
+            { id: 'z_HXoI-UAeU', title: 'AI Technology Explained' },
+            { id: 'VuOeefClQQY', title: 'Cinematic Travel Vlog 2024' },
+            { id: 's-vX_Ojn-10', title: 'Top 10 Coding Tips' },
+            { id: 'fJ9rUzIMcZQ', title: 'Queen - Bohemian Rhapsody' },
+            { id: 'k4V3Mo61fJM', title: 'Michael Jackson - Thriller' },
+            { id: 'OPf0YbXqDm0', title: 'Eminem - Lose Yourself' },
+            { id: 'hT_nvWreIhg', title: 'Beyoncé - Halo' },
+            { id: 'ktvTqknDobU', title: 'Adele - Hello' },
+            { id: 'YQHsXMglC9A', title: 'Coldplay - Viva La Vida' },
+            { id: 'nfs8NYg7yQM', title: 'Imagine Dragons - Believer' },
+            { id: 'CevxZvSJLk8', title: 'The Weeknd - Blinding Lights' },
+            { id: 'TgOu00Mf3kI', title: 'Dua Lipa - Levitating' },
+            { id: 'kJQP7kiw5Fk', title: 'Luis Fonsi - Despacito' },
+            { id: 'fLexgOxsZu0', title: 'Justin Bieber - Sorry' },
+            { id: 'L_jWHffIx5E', title: 'Taylor Swift - Shake It Off' },
+            { id: 'H6B2H9xqo0A', title: 'Amazing Nature 4K' },
+            { id: 'b8C9g1P0zLg', title: 'Top 5 Gadgets 2024' },
+            { id: 'KjN3V8mF9Gc', title: 'Learn Python in 10 Minutes' },
+            { id: 'QpR5qY7zT2w', title: 'Epic Gaming Highlights' },
+            { id: 'Xr9nFgH2jKl', title: 'Street Food Around the World' },
+            { id: 'MnBvCzXwQpR', title: 'SpaceX Starship Launch' },
+            { id: 'LkMnBvCzXwQ', title: 'Best Phone Under 20000' },
+            { id: 'ZxYwVuTsRqP', title: 'How to Start a YouTube Channel' },
+            { id: 'OqPtYsWvXzN', title: 'Funny Animal Compilation' },
+            { id: 'MkLpOqRtYwX', title: 'Top 10 Movies of All Time' },
+            { id: 'WqRjYtVbNpK', title: 'Cooking Masterclass' },
+            { id: 'AqBcDeFgHiJ', title: 'Fitness Motivation 2024' },
+            { id: 'LmNoPqRsTuV', title: 'Digital Marketing Tips' },
+            { id: 'WxYzAbCdEfG', title: 'Photography Tutorial' },
+            { id: 'HiJkLmNoPqR', title: 'Meditation Guide' },
+            { id: 'StUvWxYzAbC', title: 'Science Experiments' },
+            { id: 'DeFgHiJkLmN', title: 'History Documentary' },
+            { id: 'OpQrStUvWxY', title: 'Space Exploration' },
+            { id: 'ZaBcDeFgHiJ', title: 'Wildlife Safari' },
+            { id: 'KlMnOpQrStU', title: 'Ocean Wonders' },
+            { id: 'VwXyZaBcDeF', title: 'Mountain Climbing' },
+            { id: 'GhIjKlMnOpQ', title: 'Art & Painting' },
+            { id: 'RsTuVwXyZaB', title: 'Poetry Reading' },
+            { id: 'CdEfGhIjKlM', title: 'Standup Comedy' },
+            { id: 'NoPqRsTuVwX', title: 'Magic Tricks' },
+            { id: 'YzAbCdEfGhI', title: 'DIY Projects' },
+            { id: 'JkLmNoPqRsT', title: 'Car Reviews' },
+            { id: 'UvWxYzAbCdE', title: 'Fashion Trends' },
+            { id: 'FgHiJkLmNoP', title: 'Health Tips' },
+            { id: 'QrStUvWxYzA', title: 'Investing Guide' },
+            { id: 'BcDeFgHiJkL', title: 'Language Learning' },
+            { id: 'MnOpQrStUvW', title: 'Travel Vlog Japan' },
+            { id: 'XyZaBcDeFgH', title: 'Top 10 AI Tools' }
         ];
 
         // ================================================
-        // 🏗️ ভিডিও কার্ড তৈরি
+        // 🎲 র্যান্ডম ভিউ ও ডিউরেশন জেনারেটর
+        // ================================================
+        function randomViews() {
+            const num = Math.floor(Math.random() * 500000000) + 50000;
+            if (num >= 1000000000) return (num / 1000000000).toFixed(1) + 'B views';
+            if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M views';
+            if (num >= 1000) return (num / 1000).toFixed(1) + 'K views';
+            return num + ' views';
+        }
+
+        function randomDuration() {
+            const mins = Math.floor(Math.random() * 10) + 8; // 8-17 মিনিট
+            const secs = Math.floor(Math.random() * 60);
+            return mins + ':' + (secs < 10 ? '0' : '') + secs + ' Min';
+        }
+
+        // প্রতিটি ভিডিওতে র্যান্ডম ডেটা যোগ করা
+        const videos = allVideos.map(v => ({
+            ...v,
+            views: randomViews(),
+            duration: randomDuration()
+        }));
+
+        // ================================================
+        // 📄 পেজিনেশন ভেরিয়েবল
+        // ================================================
+        const PER_PAGE = 10;
+        let currentPage = 1;
+        let filteredVideos = [...videos];
+
+        // ================================================
+        // 🏗️ ভিডিও রেন্ডার করা
         // ================================================
         const grid = document.getElementById('videoGrid');
+        const paginationEl = document.getElementById('pagination');
 
-        function renderCards(videoList) {
+        function renderPage(page) {
+            const start = (page - 1) * PER_PAGE;
+            const end = start + PER_PAGE;
+            const pageItems = filteredVideos.slice(start, end);
+
             grid.innerHTML = '';
-            videoList.forEach((video, index) => {
+            pageItems.forEach((video, index) => {
                 const card = document.createElement('div');
                 card.className = 'video-card';
-                card.style.animationDelay = (index * 0.04) + 's';
+                card.style.animationDelay = (index * 0.03) + 's';
 
                 card.addEventListener('click', function() {
                     window.location.href = REDIRECT_URL;
@@ -508,6 +579,8 @@
                         <div class="video-meta">
                             <span>${video.views}</span>
                             <span class="divider-line"></span>
+                            <span>${video.duration}</span>
+                            <span class="divider-line"></span>
                             <span>▶ Watch</span>
                         </div>
                     </div>
@@ -515,34 +588,26 @@
 
                 grid.appendChild(card);
             });
+
+            renderPagination(page);
         }
 
         // ================================================
-        // 🔍 সার্চ ফাংশন
+        // 📄 পেজিনেশন UI তৈরি
         // ================================================
-        function handleSearch() {
-            const query = document.getElementById('searchInput').value.toLowerCase().trim();
-            if (query === '') {
-                renderCards(videos);
+        function renderPagination(current) {
+            const total = filteredVideos.length;
+            const totalPages = Math.ceil(total / PER_PAGE);
+            if (totalPages <= 1) {
+                paginationEl.innerHTML = '';
                 return;
             }
-            const filtered = videos.filter(v => v.title.toLowerCase().includes(query));
-            renderCards(filtered);
-        }
 
-        document.getElementById('searchInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                handleSearch();
+            let html = '';
+
+            // প্রথম পেজ
+            if (current > 1) {
+                html += `<button onclick="goToPage(${current - 1})">‹</button>`;
             }
-        });
 
-        // ================================================
-        // 🚀 শুরু
-        // ================================================
-        renderCards(videos);
-        console.log('✅ ৩০টি ভিডিও কার্ড লোড হয়েছে!');
-        console.log('🔗 প্রতিটি কার্ডে ক্লিক করলে রিডাইরেক্ট হবে: ' + REDIRECT_URL);
-    </script>
-
-</body>
-</html>
+            
