@@ -2,298 +2,253 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VideoTube6t9 - Premium Video Content</title>
-    <!-- Google Fonts -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>VideoTube6t9 · Premium Video</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* CSS Styles */
         :root {
-            --primary-color: #ff0000;
-            --bg-color: #0f0f0f;
+            --primary: #ff0000;
+            --bg: #0f0f0f;
             --card-bg: #1e1e1e;
-            --text-color: #ffffff;
-            --accent-color: #3ea6ff;
+            --text: #ffffff;
+            --radius: 12px;
         }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-
-        /* Navbar */
+        /* ── NAV ── */
         nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 5%;
-            background: rgba(0, 0, 0, 0.9);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 14px 5%; background: rgba(0,0,0,0.95);
+            position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #2a2a2a;
         }
+        .logo { font-size: 22px; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; }
+        .nav-links { list-style: none; display: flex; gap: 24px; }
+        .nav-links a { text-decoration: none; color: #f0f0f0; font-size: 0.9rem; }
+        .nav-links a:hover { color: var(--primary); }
 
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-        }
-
-        .nav-links li {
-            margin-left: 25px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: white;
-            font-weight: 400;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        /* Hero Section */
+        /* ── HERO ── */
         .hero {
-            height: 60vh;
-            background: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.3)), 
-                        url('https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 0 8%;
+            min-height: 45vw; max-height: 60vh;
+            background: linear-gradient(135deg, rgba(0,0,0,0.88), rgba(0,0,0,0.45)),
+                        url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover; background-position: center;
+            display: flex; flex-direction: column; justify-content: center;
+            align-items: flex-start; padding: 30px 6%; border-bottom: 2px solid #222;
         }
+        .hero h1 { font-size: clamp(1.6rem, 5vw, 3.2rem); font-weight: 700; margin-bottom: 10px; }
+        .hero p { max-width: 560px; font-size: clamp(0.85rem, 2.5vw, 1.1rem); color: #d0d0d0; font-weight: 300; }
 
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-        }
-
-        .hero p {
-            max-width: 600px;
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            color: #ccc;
-        }
-
-        /* Video Section */
-        .video-section {
-            padding: 50px 5%;
-        }
-
+        /* ── VIDEO SECTION ── */
+        .video-section { padding: 40px 5% 30px; }
         .section-title {
-            font-size: 24px;
-            margin-bottom: 30px;
-            border-left: 4px solid var(--primary-color);
-            padding-left: 15px;
+            font-size: clamp(1.1rem, 4vw, 1.6rem); font-weight: 600;
+            margin-bottom: 28px; border-left: 5px solid var(--primary); padding-left: 16px;
         }
 
+        /* ── GRID ── */
         .video-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        @media (min-width: 700px) {
+            .video-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        }
+        @media (min-width: 1000px) {
+            .video-grid { grid-template-columns: repeat(4, 1fr); gap: 28px; }
+        }
+        @media (max-width: 400px) {
+            .video-grid { grid-template-columns: 1fr; gap: 14px; }
         }
 
-        /* Video Card */
+        /* ── CARD ── */
         .video-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            background: var(--card-bg); border-radius: var(--radius);
+            overflow: hidden; border: 1px solid #2c2c2c;
+            transition: transform 0.25s, box-shadow 0.3s;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.5);
         }
+        .video-card:hover { transform: translateY(-4px); box-shadow: 0 14px 28px rgba(0,0,0,0.7); }
 
-        .video-card:hover {
-            transform: translateY(-10px);
+        /* ── THUMBNAIL ── */
+        .thumb-wrap {
+            position: relative; width: 100%;
+            padding-top: 56.25%; /* 16:9 ratio */
+            background: #111; overflow: hidden; cursor: pointer;
         }
-
-        .thumbnail {
-            width: 100%;
-            height: 180px;
-            background: #333;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
+        .thumb-wrap img {
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.3s; display: block;
         }
+        .thumb-wrap:hover img { transform: scale(1.05); }
 
-        .thumbnail img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .play-overlay {
+            position: absolute; inset: 0;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(0,0,0,0.25); transition: background 0.2s;
         }
+        .thumb-wrap:hover .play-overlay { background: rgba(0,0,0,0.45); }
+        .thumb-wrap:active .play-overlay { background: rgba(0,0,0,0.6); }
 
-        .card-content {
-            padding: 15px;
+        .play-btn {
+            width: clamp(42px, 12%, 62px); height: clamp(42px, 12%, 62px);
+            border-radius: 50%; background: rgba(255,255,255,0.92);
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+            transition: transform 0.15s;
         }
+        .thumb-wrap:hover .play-btn { transform: scale(1.1); }
+        .thumb-wrap:active .play-btn { transform: scale(0.95); }
+        .play-btn svg { width: 40%; height: 40%; fill: #111; margin-left: 10%; }
 
+        .card-content { padding: 12px 12px 14px; }
         .video-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            font-size: clamp(0.8rem, 2.5vw, 0.95rem);
+            font-weight: 600; color: #f0f0f0;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
         }
 
-        .watch-btn {
-            display: inline-block;
-            width: 100%;
-            padding: 10px;
-            background: var(--primary-color);
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 600;
-            transition: background 0.3s;
-            cursor: pointer;
-            border: none;
+        /* ── MODAL ── */
+        .modal-bg {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,0.92); z-index: 9999;
+            align-items: center; justify-content: center;
+            padding: 16px;
         }
+        .modal-bg.open { display: flex; }
 
-        .watch-btn:hover {
-            background: #cc0000;
+        .modal-box {
+            position: relative; width: 100%; max-width: 880px;
+            background: #000; border-radius: 12px; overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.95);
         }
-
-        .watch-btn.clicked {
-            background: #555;
-            cursor: not-allowed;
+        .modal-video-wrap { position: relative; padding-top: 56.25%; }
+        .modal-video-wrap iframe {
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%; border: none;
         }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 40px;
-            background: #000;
-            margin-top: 50px;
-            border-top: 1px solid #222;
+        .modal-close {
+            position: absolute; top: 8px; right: 8px;
+            width: 34px; height: 34px; border-radius: 50%;
+            background: rgba(0,0,0,0.8); border: 2px solid #666;
+            color: #fff; font-size: 16px; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            z-index: 10; transition: background 0.2s; line-height: 1;
         }
+        .modal-close:hover { background: #cc0000; border-color: #cc0000; }
 
-        footer p {
-            color: #777;
-            font-size: 14px;
-        }
+        /* ── FOOTER ── */
+        footer { text-align: center; padding: 36px 20px; background: #0a0a0a; margin-top: 50px; border-top: 1px solid #222; }
+        footer p { color: #6a6a6a; font-size: 13px; }
 
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
+        /* ── MOBILE NAV ── */
+        @media (max-width: 600px) {
             .nav-links { display: none; }
+            .logo { font-size: 18px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav>
-        <div class="logo">VideoTube6t9</div>
-        <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Trending</a></li>
-            <li><a href="#">Movies</a></li>
-            <li><a href="#">Subscription</a></li>
-        </ul>
-    </nav>
+<nav>
+    <div class="logo">VideoTube6t9</div>
+    <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Trending</a></li>
+    </ul>
+</nav>
 
-    <!-- Hero Section -->
-    <header class="hero">
-        <h1>Exclusive Content Awaits</h1>
-        <p>Watch the latest and most trending videos from around the world. High quality, zero buffering.</p>
-    </header>
+<header class="hero">
+    <h1>Exclusive Content Awaits</h1>
+    <p>Watch the latest trending videos from around the world.</p>
+</header>
 
-    <!-- Video Grid Section -->
-    <section class="video-section">
-        <h2 class="section-title">Featured Videos</h2>
-        
-        <div class="video-grid">
-            <!-- Video Card 1 -->
-            <div class="video-card">
-                <div class="thumbnail">
-                    <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=500&q=60" alt="Thumbnail">
-                </div>
-                <div class="card-content">
-                    <div class="video-title">The Future of AI Technology</div>
-                    <button class="watch-btn" onclick="openVideo(this, 'https://www.youtube.com/watch?v=dQw4w9WgXcQ')">Watch Now</button>
-                </div>
+<section class="video-section">
+    <h2 class="section-title">Featured Videos</h2>
+    <div class="video-grid">
+
+        <!-- Card 1 -->
+        <div class="video-card">
+            <div class="thumb-wrap" data-video-id="z_HXoI-UAeU" onclick="openModal(this)">
+                <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=500&q=60" alt="AI Technology">
+                <div class="play-overlay"><div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
             </div>
-
-            <!-- Video Card 2 -->
-            <div class="video-card">
-                <div class="thumbnail">
-                    <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=500&q=60" alt="Thumbnail">
-                </div>
-                <div class="card-content">
-                    <div class="video-title">Cinematic Travel Vlog 2024</div>
-                    <button class="watch-btn" onclick="openVideo(this, 'https://www.youtube.com/watch?v=dQw4w9WgXcQ')">Watch Now</button>
-                </div>
-            </div>
-
-            <!-- Video Card 3 -->
-            <div class="video-card">
-                <div class="thumbnail">
-                    <img src="https://images.unsplash.com/photo-1492691523567-6119e289df3a?auto=format&fit=crop&w=500&q=60" alt="Thumbnail">
-                </div>
-                <div class="card-content">
-                    <div class="video-title">Top 10 Coding Tips</div>
-                    <button class="watch-btn" onclick="openVideo(this, 'https://www.youtube.com/watch?v=dQw4w9WgXcQ')">Watch Now</button>
-                </div>
-            </div>
-
-            <!-- Video Card 4 -->
-            <div class="video-card">
-                <div class="thumbnail">
-                    <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=500&q=60" alt="Thumbnail">
-                </div>
-                <div class="card-content">
-                    <div class="video-title">Epic Movie Trailer</div>
-                    <button class="watch-btn" onclick="openVideo(this, 'https://www.youtube.com/watch?v=dQw4w9WgXcQ')">Watch Now</button>
-                </div>
-            </div>
+            <div class="card-content"><div class="video-title">The Future of AI Technology</div></div>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 VideoTube6t9. All Rights Reserved.</p>
-    </footer>
+        <!-- Card 2 -->
+        <div class="video-card">
+            <div class="thumb-wrap" data-video-id="VuOeefClQQY" onclick="openModal(this)">
+                <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=500&q=60" alt="Travel Vlog">
+                <div class="play-overlay"><div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+            </div>
+            <div class="card-content"><div class="video-title">Cinematic Travel Vlog 2024</div></div>
+        </div>
 
-    <!-- JavaScript Logic -->
-    <script>
-        function openVideo(button, videoUrl) {
-            // Check if already clicked
-            if (button.classList.contains('clicked')) {
-                alert("You have already clicked this video link.");
-                return;
-            }
+        <!-- Card 3 -->
+        <div class="video-card">
+            <div class="thumb-wrap" data-video-id="s-vX_Ojn-10" onclick="openModal(this)">
+                <img src="https://images.unsplash.com/photo-1492691523567-6119e289df3a?auto=format&fit=crop&w=500&q=60" alt="Coding Tips">
+                <div class="play-overlay"><div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+            </div>
+            <div class="card-content"><div class="video-title">Top 10 Coding Tips</div></div>
+        </div>
 
-            // Redirect to video URL
-            window.open(videoUrl, '_blank');
+        <!-- Card 4 — লিংক বাকি আছে -->
+        <div class="video-card">
+            <div class="thumb-wrap" data-video-id="YOUR_VIDEO_ID_4" onclick="openModal(this)">
+                <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=500&q=60" alt="Movie Trailer">
+                <div class="play-overlay"><div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+            </div>
+            <div class="card-content"><div class="video-title">Epic Movie Trailer</div></div>
+        </div>
 
-            // Set state so it can't be clicked again for the same link
-            button.innerHTML = "Link Opened";
-            button.classList.add('clicked');
-            button.style.backgroundColor = "#444";
-            button.disabled = true;
-        }
-    </script>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 VideoTube6t9. All Rights Reserved.</p>
+</footer>
+
+<!-- Modal Popup -->
+<div class="modal-bg" id="videoModal" onclick="handleModalClick(event)">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div class="modal-video-wrap">
+            <iframe id="modalIframe" src="" allowfullscreen allow="autoplay; encrypted-media; fullscreen"></iframe>
+        </div>
+    </div>
+</div>
+
+<script>
+function openModal(thumb) {
+    var videoId = thumb.getAttribute('data-video-id');
+    if (!videoId || videoId.startsWith('YOUR_')) {
+        alert('এই কার্ডে ভিডিও এখনো বসানো হয়নি।');
+        return;
+    }
+    document.getElementById('modalIframe').src =
+        'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+    document.getElementById('videoModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    document.getElementById('modalIframe').src = '';
+    document.getElementById('videoModal').classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+function handleModalClick(e) {
+    if (e.target === document.getElementById('videoModal')) closeModal();
+}
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+});
+</script>
 
 </body>
 </html>
