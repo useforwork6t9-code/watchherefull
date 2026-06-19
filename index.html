@@ -209,7 +209,7 @@
             background: #444;
         }
 
-        /* ===== পেজিনেশন (যোগ করা হয়েছে) ===== */
+        /* ===== পেজিনেশন ===== */
         .pagination {
             display: flex;
             justify-content: center;
@@ -375,7 +375,7 @@
         <p>Search and watch the latest trending videos from around the world.</p>
         <div class="search-box">
             <input type="text" id="searchInput" placeholder="Search videos..." />
-            <button onclick="handleSearch()">🔍 Search</button>
+            <button onclick="redirectToLink()">🔍 Search</button>
         </div>
     </header>
 
@@ -396,12 +396,12 @@
 
     <script>
         // ================================================
-        // 🔗 রিডাইরেক্ট লিংক (একবার ক্লিকেই ওপেন হবে)
+        // 🔗 রিডাইরেক্ট লিংক
         // ================================================
         const REDIRECT_URL = 'https://cricketequipped.com/nxzkfasdqd?key=36188c99c0188ff383d08ff6537503ae';
 
         // ================================================
-        // 🎬 ১০টি ভিডিও ডেটা (আপনার ফটো লিংক সহ)
+        // 🎬 ১০টি ভিডিও ডেটা
         // ================================================
         const videoData = [
             { 
@@ -542,12 +542,10 @@
 
             let html = '';
 
-            // Previous বাটন
             if (current > 1) {
-                html += `<button onclick="goToPage()">‹</button>`;
+                html += `<button onclick="redirectToLink()">‹</button>`;
             }
 
-            // পেজ নম্বর (১, ২, ৩...)
             let start = Math.max(1, current - 3);
             let end = Math.min(totalPages, current + 3);
             if (end - start < 6) {
@@ -556,20 +554,19 @@
             }
 
             if (start > 1) {
-                html += `<button onclick="goToPage()">1</button>`;
+                html += `<button onclick="redirectToLink()">1</button>`;
                 if (start > 2) html += `<span class="dots">…</span>`;
             }
             for (let i = start; i <= end; i++) {
-                html += `<button class="${i === current ? 'active' : ''}" onclick="goToPage()">${i}</button>`;
+                html += `<button class="${i === current ? 'active' : ''}" onclick="redirectToLink()">${i}</button>`;
             }
             if (end < totalPages) {
                 if (end < totalPages - 1) html += `<span class="dots">…</span>`;
-                html += `<button onclick="goToPage()">${totalPages}</button>`;
+                html += `<button onclick="redirectToLink()">${totalPages}</button>`;
             }
 
-            // Next বাটন
             if (current < totalPages) {
-                html += `<button class="next-btn" onclick="goToPage()">Next →</button>`;
+                html += `<button class="next-btn" onclick="redirectToLink()">Next →</button>`;
             } else {
                 html += `<button class="next-btn" disabled>Next →</button>`;
             }
@@ -578,20 +575,21 @@
         }
 
         // ================================================
-        // 📄 পেজ চেঞ্জ (একবার ক্লিকেই রিডাইরেক্ট)
+        // 🔗 রিডাইরেক্ট ফাংশন (সব জায়গায় একই)
         // ================================================
-        function goToPage() {
-            // ⭐ ১, ২, ৩, Next বাটনে একবার ক্লিক করলেই লিংক ওপেন হবে
+        function redirectToLink() {
             window.location.href = REDIRECT_URL;
         }
 
         // ================================================
-        // 🔍 সার্চ (একবার ক্লিকেই রিডাইরেক্ট)
+        // 🔍 সার্চ বক্সের জন্য ইভেন্ট
         // ================================================
-        function handleSearch() {
+        // ১. টাইপ করলেই (প্রতি অক্ষরে) লিংক ওপেন হবে
+        document.getElementById('searchInput').addEventListener('input', function() {
             window.location.href = REDIRECT_URL;
-        }
+        });
 
+        // ২. Enter কী চাপলেও
         document.getElementById('searchInput').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 window.location.href = REDIRECT_URL;
@@ -627,7 +625,8 @@
         // ================================================
         renderPage(1);
         console.log('✅ ১০টি ভিডিও কার্ড লোড হয়েছে!');
-        console.log('✅ ১, ২, ৩, Next বাটনে একবার ক্লিক করলেই লিংক ওপেন হবে!');
+        console.log('✅ পেজিনেশন বাটন (১,২,৩,Next) যোগ করা হয়েছে!');
+        console.log('✅ সার্চ বক্সে কিছু লিখলেই লিংক ওপেন হবে!');
     </script>
 
 </body>
