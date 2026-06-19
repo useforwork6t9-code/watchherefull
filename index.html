@@ -271,6 +271,57 @@
             display: inline-block;
         }
 
+        /* ===== মোডাল ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.94);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .modal.open {
+            display: flex;
+        }
+        .modal-box {
+            position: relative;
+            width: 100%;
+            max-width: 880px;
+            background: #000;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
+        }
+        .modal-box iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+            display: block;
+        }
+        .modal-close {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            background: rgba(0, 0, 0, 0.7);
+            border: none;
+            color: #fff;
+            font-size: 28px;
+            cursor: pointer;
+            z-index: 10;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.25s;
+        }
+        .modal-close:hover {
+            background: #cc0000;
+        }
+
         /* ===== পেজিনেশন ===== */
         .pagination {
             display: flex;
@@ -341,6 +392,26 @@
         .video-card:nth-child(8) { animation-delay: 0.26s; }
         .video-card:nth-child(9) { animation-delay: 0.29s; }
         .video-card:nth-child(10) { animation-delay: 0.32s; }
+        .video-card:nth-child(11) { animation-delay: 0.35s; }
+        .video-card:nth-child(12) { animation-delay: 0.38s; }
+        .video-card:nth-child(13) { animation-delay: 0.41s; }
+        .video-card:nth-child(14) { animation-delay: 0.44s; }
+        .video-card:nth-child(15) { animation-delay: 0.47s; }
+        .video-card:nth-child(16) { animation-delay: 0.50s; }
+        .video-card:nth-child(17) { animation-delay: 0.53s; }
+        .video-card:nth-child(18) { animation-delay: 0.56s; }
+        .video-card:nth-child(19) { animation-delay: 0.59s; }
+        .video-card:nth-child(20) { animation-delay: 0.62s; }
+        .video-card:nth-child(21) { animation-delay: 0.65s; }
+        .video-card:nth-child(22) { animation-delay: 0.68s; }
+        .video-card:nth-child(23) { animation-delay: 0.71s; }
+        .video-card:nth-child(24) { animation-delay: 0.74s; }
+        .video-card:nth-child(25) { animation-delay: 0.77s; }
+        .video-card:nth-child(26) { animation-delay: 0.80s; }
+        .video-card:nth-child(27) { animation-delay: 0.83s; }
+        .video-card:nth-child(28) { animation-delay: 0.86s; }
+        .video-card:nth-child(29) { animation-delay: 0.89s; }
+        .video-card:nth-child(30) { animation-delay: 0.92s; }
 
         footer {
             text-align: center;
@@ -404,6 +475,9 @@
                 padding: 4px 10px;
                 font-size: 0.75rem;
             }
+            .modal-box iframe {
+                height: 250px;
+            }
         }
     </style>
 </head>
@@ -440,7 +514,6 @@
             <!-- JavaScript দিয়ে ভিডিও লোড হবে -->
         </div>
 
-        <!-- ===== পেজিনেশন ===== -->
         <div class="pagination" id="pagination"></div>
     </section>
 
@@ -448,14 +521,17 @@
         <p>&copy; 2026 VideoTube6t9. All Rights Reserved.</p>
     </footer>
 
+    <!-- ===== মোডাল ===== -->
+    <div class="modal" id="videoModal">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeVideo()">✕</button>
+            <iframe id="videoIframe" src="" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+        </div>
+    </div>
+
     <script>
         // ================================================
-        // 🔗 আপনার দেওয়া লিংক
-        // ================================================
-        const REDIRECT_URL = 'https://cricketequipped.com/nxzkfasdqd?key=36188c99c0188ff383d08ff6537503ae';
-
-        // ================================================
-        // 📌 ৫৩টি ভিডিওর ডেটা (বেশি করে)
+        // 🎬 ৩০টি ভিডিওর ডেটা
         // ================================================
         const allVideos = [
             { id: '9bZkp7q19f0', title: 'PSY - Gangnam Style' },
@@ -487,34 +563,11 @@
             { id: 'LkMnBvCzXwQ', title: 'Best Phone Under 20000' },
             { id: 'ZxYwVuTsRqP', title: 'How to Start a YouTube Channel' },
             { id: 'OqPtYsWvXzN', title: 'Funny Animal Compilation' },
-            { id: 'MkLpOqRtYwX', title: 'Top 10 Movies of All Time' },
-            { id: 'WqRjYtVbNpK', title: 'Cooking Masterclass' },
-            { id: 'AqBcDeFgHiJ', title: 'Fitness Motivation 2024' },
-            { id: 'LmNoPqRsTuV', title: 'Digital Marketing Tips' },
-            { id: 'WxYzAbCdEfG', title: 'Photography Tutorial' },
-            { id: 'HiJkLmNoPqR', title: 'Meditation Guide' },
-            { id: 'StUvWxYzAbC', title: 'Science Experiments' },
-            { id: 'DeFgHiJkLmN', title: 'History Documentary' },
-            { id: 'OpQrStUvWxY', title: 'Space Exploration' },
-            { id: 'ZaBcDeFgHiJ', title: 'Wildlife Safari' },
-            { id: 'KlMnOpQrStU', title: 'Ocean Wonders' },
-            { id: 'VwXyZaBcDeF', title: 'Mountain Climbing' },
-            { id: 'GhIjKlMnOpQ', title: 'Art & Painting' },
-            { id: 'RsTuVwXyZaB', title: 'Poetry Reading' },
-            { id: 'CdEfGhIjKlM', title: 'Standup Comedy' },
-            { id: 'NoPqRsTuVwX', title: 'Magic Tricks' },
-            { id: 'YzAbCdEfGhI', title: 'DIY Projects' },
-            { id: 'JkLmNoPqRsT', title: 'Car Reviews' },
-            { id: 'UvWxYzAbCdE', title: 'Fashion Trends' },
-            { id: 'FgHiJkLmNoP', title: 'Health Tips' },
-            { id: 'QrStUvWxYzA', title: 'Investing Guide' },
-            { id: 'BcDeFgHiJkL', title: 'Language Learning' },
-            { id: 'MnOpQrStUvW', title: 'Travel Vlog Japan' },
-            { id: 'XyZaBcDeFgH', title: 'Top 10 AI Tools' }
+            { id: 'MkLpOqRtYwX', title: 'Top 10 Movies of All Time' }
         ];
 
         // ================================================
-        // 🎲 র্যান্ডম ভিউ ও ডিউরেশন জেনারেটর
+        // 🎲 র্যান্ডম ভিউ ও ডিউরেশন
         // ================================================
         function randomViews() {
             const num = Math.floor(Math.random() * 500000000) + 50000;
@@ -525,12 +578,11 @@
         }
 
         function randomDuration() {
-            const mins = Math.floor(Math.random() * 10) + 8; // 8-17 মিনিট
+            const mins = Math.floor(Math.random() * 10) + 8;
             const secs = Math.floor(Math.random() * 60);
             return mins + ':' + (secs < 10 ? '0' : '') + secs + ' Min';
         }
 
-        // প্রতিটি ভিডিওতে র্যান্ডম ডেটা যোগ করা
         const videos = allVideos.map(v => ({
             ...v,
             views: randomViews(),
@@ -538,18 +590,18 @@
         }));
 
         // ================================================
-        // 📄 পেজিনেশন ভেরিয়েবল
+        // 📄 পেজিনেশন
         // ================================================
         const PER_PAGE = 10;
         let currentPage = 1;
         let filteredVideos = [...videos];
 
-        // ================================================
-        // 🏗️ ভিডিও রেন্ডার করা
-        // ================================================
         const grid = document.getElementById('videoGrid');
         const paginationEl = document.getElementById('pagination');
 
+        // ================================================
+        // 🖼️ কার্ড রেন্ডার
+        // ================================================
         function renderPage(page) {
             const start = (page - 1) * PER_PAGE;
             const end = start + PER_PAGE;
@@ -561,8 +613,9 @@
                 card.className = 'video-card';
                 card.style.animationDelay = (index * 0.03) + 's';
 
+                // ⭐ কার্ডে ক্লিক করলে ভিডিও চালু হবে
                 card.addEventListener('click', function() {
-                    window.location.href = REDIRECT_URL;
+                    playVideo(video.id);
                 });
 
                 card.innerHTML = `
@@ -575,39 +628,4 @@
                         </div>
                     </div>
                     <div class="card-content">
-                        <div class="video-title">${video.title}</div>
-                        <div class="video-meta">
-                            <span>${video.views}</span>
-                            <span class="divider-line"></span>
-                            <span>${video.duration}</span>
-                            <span class="divider-line"></span>
-                            <span>▶ Watch</span>
-                        </div>
-                    </div>
-                `;
-
-                grid.appendChild(card);
-            });
-
-            renderPagination(page);
-        }
-
-        // ================================================
-        // 📄 পেজিনেশন UI তৈরি
-        // ================================================
-        function renderPagination(current) {
-            const total = filteredVideos.length;
-            const totalPages = Math.ceil(total / PER_PAGE);
-            if (totalPages <= 1) {
-                paginationEl.innerHTML = '';
-                return;
-            }
-
-            let html = '';
-
-            // প্রথম পেজ
-            if (current > 1) {
-                html += `<button onclick="goToPage(${current - 1})">‹</button>`;
-            }
-
-            
+  
