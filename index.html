@@ -218,15 +218,78 @@
       color: #ff0000;
       text-decoration: none;
       letter-spacing: 0.5px;
-      transition: color 0.2s;
       cursor: pointer;
-      border-bottom: 2px solid transparent;
-      padding: 4px 0;
+      padding: 6px 18px;
+      border-radius: 30px;
+      border: 2px solid #ff0000;
+      background: transparent;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      animation: pulse 2s infinite;
     }
 
     .watch-link:hover {
-      color: #ff4444;
-      border-bottom-color: #ff0000;
+      background: #ff0000;
+      color: #ffffff;
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255, 0, 0, 0.4);
+      animation: pulse 1s infinite;
+    }
+
+    .watch-link:active {
+      transform: scale(0.92);
+    }
+
+    .watch-link::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .watch-link:active::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .watch-link::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.1) 50%,
+        transparent 70%
+      );
+      transform: rotate(45deg) translateX(-100%);
+      transition: transform 0.6s;
+    }
+
+    .watch-link:hover::after {
+      transform: rotate(45deg) translateX(100%);
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.4);
+      }
+      70% {
+        box-shadow: 0 0 0 12px rgba(255, 0, 0, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
+      }
     }
 
     .modal-bg {
@@ -372,6 +435,50 @@
       <div class="video-card">
         <div class="thumb-wrap" data-video-id="XqZsoesa55w" onclick="openModal(this)">
           <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=500&q=60" alt="Video" loading="lazy">
+          <div class="play-overlay"><div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+        </div>
+        <div class="card-content">
+          <span class="watch-link" onclick="openModalFromLink(this)">▶ Watch Full Video</span>
+        </div>
+      </div>
+
+      <!-- 🎬 Card 5 -->
+      <div class="video-card">
+        <div class="thumb-wrap" data-video-id="dQw4w9WgXcQ" onclick="openModal(this)">
+          <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=500&q=60" alt="Video" loading="lazy">
+          <div class="play-overlay"><div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+        </div>
+        <div class="card-content">
+          <span class="watch-link" onclick="openModalFromLink(this)">▶ Watch Full Video</span>
+        </div>
+      </div>
+
+      <!-- 🎬 Card 6 -->
+      <div class="video-card">
+        <div class="thumb-wrap" data-video-id="z_HXoI-UAeU" onclick="openModal(this)">
+          <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=500&q=60" alt="Video" loading="lazy">
+          <div class="play-overlay"><div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+        </div>
+        <div class="card-content">
+          <span class="watch-link" onclick="openModalFromLink(this)">▶ Watch Full Video</span>
+        </div>
+      </div>
+
+      <!-- 🎬 Card 7 -->
+      <div class="video-card">
+        <div class="thumb-wrap" data-video-id="VuOeefClQQY" onclick="openModal(this)">
+          <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=500&q=60" alt="Video" loading="lazy">
+          <div class="play-overlay"><div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+        </div>
+        <div class="card-content">
+          <span class="watch-link" onclick="openModalFromLink(this)">▶ Watch Full Video</span>
+        </div>
+      </div>
+
+      <!-- 🎬 Card 8 -->
+      <div class="video-card">
+        <div class="thumb-wrap" data-video-id="s-vX_Ojn-10" onclick="openModal(this)">
+          <img src="https://images.unsplash.com/photo-1492691523567-6119e289df3a?auto=format&fit=crop&w=500&q=60" alt="Video" loading="lazy">
           <div class="play-overlay"><div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
         </div>
         <div class="card-content">
