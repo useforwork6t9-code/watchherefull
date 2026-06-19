@@ -56,8 +56,9 @@
             color: #ff0000;
         }
 
+        /* ===== হিরো সেকশন ===== */
         .hero {
-            min-height: 40vh;
+            min-height: 35vh;
             background: linear-gradient(135deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.5)),
                 url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
@@ -71,18 +72,85 @@
         }
 
         .hero h1 {
-            font-size: clamp(1.8rem, 5vw, 3.5rem);
+            font-size: clamp(1.5rem, 4vw, 2.8rem);
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 6px;
         }
 
         .hero p {
             max-width: 560px;
-            font-size: clamp(0.9rem, 2vw, 1.2rem);
+            font-size: clamp(0.85rem, 1.8vw, 1.1rem);
             color: #d0d0d0;
+            font-weight: 300;
+            margin-bottom: 18px;
+        }
+
+        /* ===== সার্চ বক্স ===== */
+        .search-container {
+            width: 100%;
+            max-width: 520px;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid #333;
+            border-radius: 50px;
+            padding: 4px 6px 4px 20px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            backdrop-filter: blur(6px);
+        }
+
+        .search-box:focus-within {
+            border-color: #ff0000;
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.15);
+        }
+
+        .search-box input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #fff;
+            font-size: 0.95rem;
+            padding: 12px 0;
             font-weight: 300;
         }
 
+        .search-box input::placeholder {
+            color: #888;
+            font-weight: 300;
+        }
+
+        .search-box button {
+            background: #ff0000;
+            border: none;
+            border-radius: 50px;
+            padding: 10px 24px;
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .search-box button:hover {
+            background: #cc0000;
+            transform: scale(1.02);
+        }
+
+        .search-box button svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        /* ===== ভিডিও সেকশন ===== */
         .video-section {
             padding: 30px 5% 50px;
             max-width: 900px;
@@ -115,7 +183,6 @@
             border-color: #ff000055;
         }
 
-        /* ===== থাম্বনেইল ===== */
         .thumb-wrap {
             position: relative;
             width: 100%;
@@ -138,7 +205,6 @@
             transform: scale(1.04);
         }
 
-        /* ===== প্লে ওভারলে ===== */
         .play-overlay {
             position: absolute;
             inset: 0;
@@ -177,7 +243,6 @@
             margin-left: 6px;
         }
 
-        /* ===== কার্ডের কন্টেন্ট (ছোট করা হয়েছে) ===== */
         .card-content {
             padding: 14px 20px 16px;
             display: flex;
@@ -201,19 +266,14 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            /* 👈 গ্যাপ ছোট করা হয়েছে */
         }
 
-        /* ===== লাইন ডিভাইডার ছোট করা হয়েছে ===== */
         .divider-line {
             width: 1px;
             height: 18px;
             background: #444;
             display: inline-block;
         }
-
-        /* ===== Watch বাটন রিমুভ ===== */
-        /* .watch-link পুরোপুরি রিমুভ করা হয়েছে */
 
         /* ===== অ্যানিমেশন ===== */
         .video-card {
@@ -296,6 +356,17 @@
                 width: 28px;
                 height: 28px;
             }
+            .search-box {
+                padding: 2px 4px 2px 16px;
+            }
+            .search-box input {
+                font-size: 0.85rem;
+                padding: 10px 0;
+            }
+            .search-box button {
+                padding: 8px 16px;
+                font-size: 0.75rem;
+            }
         }
     </style>
 </head>
@@ -311,8 +382,19 @@
     </nav>
 
     <header class="hero">
-        <h1>🎬 Exclusive Content Awaits</h1>
-        <p>Watch the latest trending videos from around the world. Scroll down to explore.</p>
+        <h1>🎬 Find Your Favorite Videos</h1>
+        <p>Search and watch the latest trending videos from around the world.</p>
+
+        <!-- ===== সার্চ বক্স ===== -->
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search videos..." />
+                <button onclick="handleSearch()">
+                    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2" fill="none"/><line x1="21" y1="21" x2="16.65" y2="16.65" stroke="currentColor" stroke-width="2"/></svg>
+                    Search
+                </button>
+            </div>
+        </div>
     </header>
 
     <section class="video-section">
@@ -374,39 +456,64 @@
         // ================================================
         const grid = document.getElementById('videoGrid');
 
-        videos.forEach((video, index) => {
-            const card = document.createElement('div');
-            card.className = 'video-card';
-            card.style.animationDelay = (index * 0.04) + 's';
+        function renderCards(videoList) {
+            grid.innerHTML = '';
+            videoList.forEach((video, index) => {
+                const card = document.createElement('div');
+                card.className = 'video-card';
+                card.style.animationDelay = (index * 0.04) + 's';
 
-            // ⭐ কার্ডে ক্লিক করলে রিডাইরেক্ট হবে
-            card.addEventListener('click', function() {
-                window.location.href = REDIRECT_URL;
-            });
+                card.addEventListener('click', function() {
+                    window.location.href = REDIRECT_URL;
+                });
 
-            card.innerHTML = `
-                <div class="thumb-wrap">
-                    <img src="https://img.youtube.com/vi/${video.id}/maxresdefault.jpg" alt="${video.title}" loading="lazy">
-                    <div class="play-overlay">
-                        <div class="play-btn">
-                            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+                card.innerHTML = `
+                    <div class="thumb-wrap">
+                        <img src="https://img.youtube.com/vi/${video.id}/maxresdefault.jpg" alt="${video.title}" loading="lazy">
+                        <div class="play-overlay">
+                            <div class="play-btn">
+                                <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="card-content">
-                    <div class="video-title">${video.title}</div>
-                    <div class="video-meta">
-                        <span>${video.views}</span>
-                        <!-- 👇 লাইন ডিভাইডার (ছোট) -->
-                        <span class="divider-line"></span>
-                        <span>▶ Watch</span>
+                    <div class="card-content">
+                        <div class="video-title">${video.title}</div>
+                        <div class="video-meta">
+                            <span>${video.views}</span>
+                            <span class="divider-line"></span>
+                            <span>▶ Watch</span>
+                        </div>
                     </div>
-                </div>
-            `;
+                `;
 
-            grid.appendChild(card);
+                grid.appendChild(card);
+            });
+        }
+
+        // ================================================
+        // 🔍 সার্চ ফাংশন
+        // ================================================
+        function handleSearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            if (query === '') {
+                renderCards(videos);
+                return;
+            }
+            const filtered = videos.filter(v => v.title.toLowerCase().includes(query));
+            renderCards(filtered);
+        }
+
+        // Enter key প্রেস করলে সার্চ হবে
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                handleSearch();
+            }
         });
 
+        // ================================================
+        // 🚀 শুরু
+        // ================================================
+        renderCards(videos);
         console.log('✅ ৩০টি ভিডিও কার্ড লোড হয়েছে!');
         console.log('🔗 প্রতিটি কার্ডে ক্লিক করলে রিডাইরেক্ট হবে: ' + REDIRECT_URL);
     </script>
