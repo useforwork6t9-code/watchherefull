@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-    <title>VideoTube6t9 · Premium Videos</title>
+    <title>VideoTube6t9 · Premium Video</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
     <style>
         * {
@@ -19,7 +19,6 @@
             line-height: 1.6;
         }
 
-        /* ===== নেভিগেশন ===== */
         nav {
             display: flex;
             justify-content: space-between;
@@ -57,7 +56,6 @@
             color: #ff0000;
         }
 
-        /* ===== হিরো সেকশন ===== */
         .hero {
             min-height: 40vh;
             background: linear-gradient(135deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.5)),
@@ -85,7 +83,6 @@
             font-weight: 300;
         }
 
-        /* ===== ভিডিও সেকশন ===== */
         .video-section {
             padding: 30px 5% 50px;
             max-width: 900px;
@@ -100,7 +97,7 @@
             padding-left: 16px;
         }
 
-        /* ===== প্রতিটি কার্ড ===== */
+        /* ===== কার্ড ===== */
         .video-card {
             background: #1a1a1a;
             border-radius: 14px;
@@ -109,6 +106,7 @@
             border: 1px solid #2c2c2c;
             transition: transform 0.3s, box-shadow 0.3s;
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            cursor: pointer;
         }
 
         .video-card:hover {
@@ -124,7 +122,6 @@
             padding-top: 56.25%;
             background: #111;
             overflow: hidden;
-            cursor: pointer;
         }
 
         .thumb-wrap img {
@@ -150,9 +147,10 @@
             justify-content: center;
             background: rgba(0, 0, 0, 0.3);
             transition: background 0.3s;
+            pointer-events: none;
         }
 
-        .thumb-wrap:hover .play-overlay {
+        .video-card:hover .play-overlay {
             background: rgba(0, 0, 0, 0.5);
         }
 
@@ -168,7 +166,7 @@
             transition: transform 0.25s;
         }
 
-        .thumb-wrap:hover .play-btn {
+        .video-card:hover .play-btn {
             transform: scale(1.12);
         }
 
@@ -179,166 +177,45 @@
             margin-left: 6px;
         }
 
-        /* ===== কার্ডের কন্টেন্ট ===== */
+        /* ===== কার্ডের কন্টেন্ট (ছোট করা হয়েছে) ===== */
         .card-content {
-            padding: 18px 20px 20px;
+            padding: 14px 20px 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 8px;
         }
 
         .video-title {
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 600;
             color: #f0f0f0;
             flex: 1;
-            min-width: 150px;
+            min-width: 120px;
         }
 
         .video-meta {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: #888;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 6px;
+            /* 👈 গ্যাপ ছোট করা হয়েছে */
         }
 
-        .watch-link {
+        /* ===== লাইন ডিভাইডার ছোট করা হয়েছে ===== */
+        .divider-line {
+            width: 1px;
+            height: 18px;
+            background: #444;
             display: inline-block;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #ff0000;
-            cursor: pointer;
-            padding: 8px 24px;
-            border-radius: 30px;
-            border: 2px solid #ff0000;
-            background: transparent;
-            transition: all 0.3s ease;
-            animation: pulse 2s infinite;
-            white-space: nowrap;
         }
 
-        .watch-link:hover {
-            background: #ff0000;
-            color: #ffffff;
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
-        }
+        /* ===== Watch বাটন রিমুভ ===== */
+        /* .watch-link পুরোপুরি রিমুভ করা হয়েছে */
 
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.3); }
-            70% { box-shadow: 0 0 0 10px rgba(255, 0, 0, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
-        }
-
-        /* ===== মোডাল ===== */
-        .modal-bg {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.94);
-            z-index: 9999;
-            align-items: center;
-            justify-content: center;
-            padding: 16px;
-        }
-
-        .modal-bg.open {
-            display: flex;
-        }
-
-        .modal-box {
-            position: relative;
-            width: 100%;
-            max-width: 880px;
-            background: #000;
-            border-radius: 14px;
-            overflow: hidden;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95);
-        }
-
-        .modal-video-wrap {
-            position: relative;
-            padding-top: 56.25%;
-        }
-
-        .modal-video-wrap iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(0, 0, 0, 0.8);
-            border: 2px solid #666;
-            color: #fff;
-            font-size: 18px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-            transition: background 0.25s;
-            line-height: 1;
-        }
-
-        .modal-close:hover {
-            background: #cc0000;
-            border-color: #cc0000;
-        }
-
-        /* ===== ফুটার ===== */
-        footer {
-            text-align: center;
-            padding: 30px 20px;
-            background: #0a0a0a;
-            border-top: 1px solid #1a1a1a;
-            margin-top: 20px;
-        }
-
-        footer p {
-            color: #555;
-            font-size: 13px;
-        }
-
-        /* ===== মোবাইল ===== */
-        @media (max-width: 600px) {
-            .nav-links {
-                display: none;
-            }
-            .logo {
-                font-size: 18px;
-            }
-            .card-content {
-                flex-direction: column;
-                align-items: stretch;
-                text-align: center;
-            }
-            .video-meta {
-                justify-content: center;
-            }
-            .play-btn {
-                width: 55px;
-                height: 55px;
-            }
-            .play-btn svg {
-                width: 28px;
-                height: 28px;
-            }
-        }
-
-        /* ===== স্ক্রল অ্যানিমেশন (ফেড ইন) ===== */
+        /* ===== অ্যানিমেশন ===== */
         .video-card {
             opacity: 0;
             transform: translateY(30px);
@@ -352,7 +229,6 @@
             }
         }
 
-        /* প্রতিটি কার্ডের জন্য ডেলি অ্যানিমেশন */
         .video-card:nth-child(1) { animation-delay: 0.05s; }
         .video-card:nth-child(2) { animation-delay: 0.10s; }
         .video-card:nth-child(3) { animation-delay: 0.15s; }
@@ -383,6 +259,44 @@
         .video-card:nth-child(28) { animation-delay: 1.40s; }
         .video-card:nth-child(29) { animation-delay: 1.45s; }
         .video-card:nth-child(30) { animation-delay: 1.50s; }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: #0a0a0a;
+            border-top: 1px solid #1a1a1a;
+            margin-top: 20px;
+        }
+
+        footer p {
+            color: #555;
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            .nav-links {
+                display: none;
+            }
+            .logo {
+                font-size: 18px;
+            }
+            .card-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+            .video-meta {
+                font-size: 0.7rem;
+            }
+            .play-btn {
+                width: 55px;
+                height: 55px;
+            }
+            .play-btn svg {
+                width: 28px;
+                height: 28px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -413,19 +327,14 @@
         <p>&copy; 2026 VideoTube6t9. All Rights Reserved.</p>
     </footer>
 
-    <!-- ===== মোডাল ===== -->
-    <div class="modal-bg" id="videoModal">
-        <div class="modal-box">
-            <button class="modal-close" onclick="closeVideo()">✕</button>
-            <div class="modal-video-wrap">
-                <iframe id="videoFrame" src="" allowfullscreen allow="autoplay; encrypted-media; fullscreen"></iframe>
-            </div>
-        </div>
-    </div>
-
     <script>
         // ================================================
-        // 📌 ৩০টি ইউটিউব ভিডিওর ডেটা
+        // 🔗 আপনার দেওয়া লিংক
+        // ================================================
+        const REDIRECT_URL = 'https://cricketequipped.com/nxzkfasdqd?key=36188c99c0188ff383d08ff6537503ae';
+
+        // ================================================
+        // 📌 ৩০টি ভিডিওর ডেটা
         // ================================================
         const videos = [
             { id: '9bZkp7q19f0', title: 'PSY - Gangnam Style', views: '4.8B views' },
@@ -461,7 +370,7 @@
         ];
 
         // ================================================
-        // 🏗️ ভিডিও কার্ড তৈরি করা
+        // 🏗️ ভিডিও কার্ড তৈরি
         // ================================================
         const grid = document.getElementById('videoGrid');
 
@@ -470,8 +379,13 @@
             card.className = 'video-card';
             card.style.animationDelay = (index * 0.04) + 's';
 
+            // ⭐ কার্ডে ক্লিক করলে রিডাইরেক্ট হবে
+            card.addEventListener('click', function() {
+                window.location.href = REDIRECT_URL;
+            });
+
             card.innerHTML = `
-                <div class="thumb-wrap" onclick="playVideo('${video.id}')">
+                <div class="thumb-wrap">
                     <img src="https://img.youtube.com/vi/${video.id}/maxresdefault.jpg" alt="${video.title}" loading="lazy">
                     <div class="play-overlay">
                         <div class="play-btn">
@@ -483,7 +397,9 @@
                     <div class="video-title">${video.title}</div>
                     <div class="video-meta">
                         <span>${video.views}</span>
-                        <span class="watch-link" onclick="event.stopPropagation(); playVideo('${video.id}')">▶ Watch</span>
+                        <!-- 👇 লাইন ডিভাইডার (ছোট) -->
+                        <span class="divider-line"></span>
+                        <span>▶ Watch</span>
                     </div>
                 </div>
             `;
@@ -491,35 +407,8 @@
             grid.appendChild(card);
         });
 
-        // ================================================
-        // 🎬 ভিডিও চালু ও বন্ধ
-        // ================================================
-        function playVideo(videoId) {
-            if (!videoId) return;
-            const iframe = document.getElementById('videoFrame');
-            iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
-            document.getElementById('videoModal').classList.add('open');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeVideo() {
-            document.getElementById('videoFrame').src = '';
-            document.getElementById('videoModal').classList.remove('open');
-            document.body.style.overflow = '';
-        }
-
-        // মোডালের বাইরে ক্লিক করলে বন্ধ
-        document.getElementById('videoModal').addEventListener('click', function(e) {
-            if (e.target === this) closeVideo();
-        });
-
-        // Escape কী চাপলে বন্ধ
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeVideo();
-        });
-
         console.log('✅ ৩০টি ভিডিও কার্ড লোড হয়েছে!');
-        console.log('🎯 প্রতি লাইনে ১টি করে ভিডিও (রেসপন্সিভ)');
+        console.log('🔗 প্রতিটি কার্ডে ক্লিক করলে রিডাইরেক্ট হবে: ' + REDIRECT_URL);
     </script>
 
 </body>
