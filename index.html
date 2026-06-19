@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>VideoTube6t9 · Premium Video</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ===== রিসেট ও বেসিক ===== */
         * {
             margin: 0;
             padding: 0;
@@ -21,7 +20,6 @@
             overflow-x: hidden;
         }
 
-        /* ===== নেভিগেশন ===== */
         nav {
             display: flex;
             justify-content: space-between;
@@ -58,7 +56,6 @@
             color: #ff0000;
         }
 
-        /* ===== হিরো ===== */
         .hero {
             min-height: 45vw;
             max-height: 60vh;
@@ -87,7 +84,6 @@
             font-weight: 300;
         }
 
-        /* ===== ভিডিও সেকশন ===== */
         .video-section {
             padding: 40px 5% 30px;
         }
@@ -100,7 +96,6 @@
             padding-left: 16px;
         }
 
-        /* ===== গ্রিড ===== */
         .video-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -128,7 +123,6 @@
             }
         }
 
-        /* ===== কার্ড ===== */
         .video-card {
             background: #1e1e1e;
             border-radius: 12px;
@@ -143,13 +137,13 @@
             box-shadow: 0 14px 28px rgba(0, 0, 0, 0.7);
         }
 
-        /* ===== থাম্বনেইল ===== */
         .thumb-wrap {
             position: relative;
             width: 100%;
-            padding-top: 56.25%; /* 16:9 */
+            padding-top: 56.25%;
             background: #111;
             overflow: hidden;
+            cursor: pointer;
         }
 
         .thumb-wrap img {
@@ -167,7 +161,6 @@
             transform: scale(1.05);
         }
 
-        /* ===== ওয়াচ বাটন ===== */
         .card-content {
             padding: 14px 12px 16px;
             text-align: center;
@@ -202,7 +195,6 @@
             100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
         }
 
-        /* ===== মোডাল (পপ-আপ) ===== */
         .modal-bg {
             display: none;
             position: fixed;
@@ -230,25 +222,16 @@
 
         .modal-video-wrap {
             position: relative;
-            width: 100%;
-            padding-top: 56.25%; /* 16:9 ফিক্সড, লেআউট শিফট হবে না */
-            background: #000;
+            padding-top: 56.25%;
         }
 
-        .modal-video-wrap iframe,
-        .modal-video-wrap .sp-embed-player {
+        .modal-video-wrap iframe {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             border: none;
-        }
-
-        /* ScreenPal-এর জন্য অতিরিক্ত ঠিক করা */
-        .modal-video-wrap .sp-embed-player {
-            padding-top: 0 !important;
-            height: 100% !important;
         }
 
         .modal-close {
@@ -276,7 +259,6 @@
             border-color: #cc0000;
         }
 
-        /* ===== ফুটার ===== */
         footer {
             text-align: center;
             padding: 36px 20px;
@@ -290,7 +272,6 @@
             font-size: 13px;
         }
 
-        /* ===== মোবাইল ===== */
         @media (max-width: 600px) {
             .nav-links {
                 display: none;
@@ -320,214 +301,229 @@
         <h2 class="section-title">Featured Videos</h2>
         <div class="video-grid">
 
-            <!-- ========================================================== -->
-            <!-- 🟢 কার্ড ১ (ScreenPal) — আপনার আইডি বসান: cO1qbknuJIM       -->
-            <!-- ========================================================== -->
+            <!-- ====== ২০টি কার্ড (YouTube) ====== -->
+
             <div class="video-card">
-                <div class="thumb-wrap">
-                    <img src="https://i.ibb.co.com/8LBLjR2x/1280x720-17643602.webp" alt="Video" loading="lazy" />
+                <div class="thumb-wrap" onclick="playVideo('9bZkp7q19f0')">
+                    <img src="https://img.youtube.com/vi/9bZkp7q19f0/maxresdefault.jpg" alt="Video" loading="lazy">
                 </div>
                 <div class="card-content">
-                    <span class="watch-link" onclick="playScreenPal('cO1qbknuJIM')">▶ Watch</span>
+                    <span class="watch-link" onclick="playVideo('9bZkp7q19f0')">▶ Watch</span>
                 </div>
             </div>
 
-            <!-- ========================================================== -->
-            <!-- 🟢 কার্ড ২ (ScreenPal) — আপনার আইডি বসান                    -->
-            <!-- ========================================================== -->
             <div class="video-card">
-                <div class="thumb-wrap">
-                    <img src="https://img.youtube.com/vi/JGwWNGJdvx8/maxresdefault.jpg" alt="Video" loading="lazy" />
+                <div class="thumb-wrap" onclick="playVideo('JGwWNGJdvx8')">
+                    <img src="https://img.youtube.com/vi/JGwWNGJdvx8/maxresdefault.jpg" alt="Video" loading="lazy">
                 </div>
                 <div class="card-content">
-                    <span class="watch-link" onclick="playScreenPal('আপনার_আইডি_এখানে')">▶ Watch</span>
+                    <span class="watch-link" onclick="playVideo('JGwWNGJdvx8')">▶ Watch</span>
                 </div>
             </div>
 
-            <!-- ========================================================== -->
-            <!-- 🟢 কার্ড ৩ (ScreenPal) — আপনার আইডি বসান                    -->
-            <!-- ========================================================== -->
             <div class="video-card">
-                <div class="thumb-wrap">
-                    <img src="https://img.youtube.com/vi/RgKAFK5djSk/maxresdefault.jpg" alt="Video" loading="lazy" />
+                <div class="thumb-wrap" onclick="playVideo('RgKAFK5djSk')">
+                    <img src="https://img.youtube.com/vi/RgKAFK5djSk/maxresdefault.jpg" alt="Video" loading="lazy">
                 </div>
                 <div class="card-content">
-                    <span class="watch-link" onclick="playScreenPal('আপনার_আইডি_এখানে')">▶ Watch</span>
+                    <span class="watch-link" onclick="playVideo('RgKAFK5djSk')">▶ Watch</span>
                 </div>
             </div>
 
-            <!-- ========================================================== -->
-            <!-- 🟢 কার্ড ৪ (ScreenPal) — আপনার আইডি বসান                    -->
-            <!-- ========================================================== -->
             <div class="video-card">
-                <div class="thumb-wrap">
-                    <img src="https://img.youtube.com/vi/XqZsoesa55w/maxresdefault.jpg" alt="Video" loading="lazy" />
+                <div class="thumb-wrap" onclick="playVideo('XqZsoesa55w')">
+                    <img src="https://img.youtube.com/vi/XqZsoesa55w/maxresdefault.jpg" alt="Video" loading="lazy">
                 </div>
                 <div class="card-content">
-                    <span class="watch-link" onclick="playScreenPal('আপনার_আইডি_এখানে')">▶ Watch</span>
+                    <span class="watch-link" onclick="playVideo('XqZsoesa55w')">▶ Watch</span>
                 </div>
             </div>
 
-            <!-- ========================================================== -->
-            <!-- 🟢 কার্ড ৫ (ScreenPal) — আপনার আইডি বসান                    -->
-            <!-- ========================================================== -->
             <div class="video-card">
-                <div class="thumb-wrap">
-                    <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Video" loading="lazy" />
+                <div class="thumb-wrap" onclick="playVideo('dQw4w9WgXcQ')">
+                    <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Video" loading="lazy">
                 </div>
                 <div class="card-content">
-                    <span class="watch-link" onclick="playScreenPal('আপনার_আইডি_এখানে')">▶ Watch</span>
+                    <span class="watch-link" onclick="playVideo('dQw4w9WgXcQ')">▶ Watch</span>
                 </div>
             </div>
 
-            <!-- ========================================================== -->
-            <!-- 🟢 কার্ড ৬ (ScreenPal) — আপনার আইডি বসান                    -->
-            <!-- ========================================================== -->
             <div class="video-card">
-                <div class="thumb-wrap">
-                    <img src="https://img.youtube.com/vi/z_HXoI-UAeU/maxresdefault.jpg" alt="Video" loading="lazy" />
+                <div class="thumb-wrap" onclick="playVideo('z_HXoI-UAeU')">
+                    <img src="https://img.youtube.com/vi/z_HXoI-UAeU/maxresdefault.jpg" alt="Video" loading="lazy">
                 </div>
                 <div class="card-content">
-                    <span class="watch-link" onclick="playScreenPal('আপনার_আইডি_এখানে')">▶ Watch</span>
+                    <span class="watch-link" onclick="playVideo('z_HXoI-UAeU')">▶ Watch</span>
                 </div>
             </div>
 
-            <!-- ========================================================== -->
-            <!-- 🟢 কার্ড ৭ (ScreenPal) — আপনার আইডি বসান                    -->
-            <!-- ========================================================== -->
             <div class="video-card">
-                <div class="thumb-wrap">
-                    <img src="https://img.youtube.com/vi/VuOeefClQQY/maxresdefault.jpg" alt="Video" loading="lazy" />
+                <div class="thumb-wrap" onclick="playVideo('VuOeefClQQY')">
+                    <img src="https://img.youtube.com/vi/VuOeefClQQY/maxresdefault.jpg" alt="Video" loading="lazy">
                 </div>
                 <div class="card-content">
-                    <span class="watch-link" onclick="playScreenPal('আপনার_আইডি_এখানে')">▶ Watch</span>
+                    <span class="watch-link" onclick="playVideo('VuOeefClQQY')">▶ Watch</span>
                 </div>
             </div>
 
-            <!-- ========================================================== -->
-            <!-- 🟢 কার্ড ৮ (ScreenPal) — আপনার আইডি বসান                    -->
-            <!-- ========================================================== -->
             <div class="video-card">
-                <div class="thumb-wrap">
-                    <img src="https://img.youtube.com/vi/s-vX_Ojn-10/maxresdefault.jpg" alt="Video" loading="lazy" />
+                <div class="thumb-wrap" onclick="playVideo('s-vX_Ojn-10')">
+                    <img src="https://img.youtube.com/vi/s-vX_Ojn-10/maxresdefault.jpg" alt="Video" loading="lazy">
                 </div>
                 <div class="card-content">
-                    <span class="watch-link" onclick="playScreenPal('আপনার_আইডি_এখানে')">▶ Watch</span>
+                    <span class="watch-link" onclick="playVideo('s-vX_Ojn-10')">▶ Watch</span>
                 </div>
             </div>
 
-            <!-- ========================================================== -->
-            <!-- 🟢 কার্ড ৯ (ScreenPal) — আপনার আইডি বসান                    -->
-            <!-- ========================================================== -->
             <div class="video-card">
-                <div class="thumb-wrap">
-                    <img src="https://img.youtube.com/vi/fJ9rUzIMcZQ/maxresdefault.jpg" alt="Video" loading="lazy" />
+                <div class="thumb-wrap" onclick="playVideo('fJ9rUzIMcZQ')">
+                    <img src="https://img.youtube.com/vi/fJ9rUzIMcZQ/maxresdefault.jpg" alt="Video" loading="lazy">
                 </div>
                 <div class="card-content">
-                    <span class="watch-link" onclick="playScreenPal('আপনার_আইডি_এখানে')">▶ Watch</span>
+                    <span class="watch-link" onclick="playVideo('fJ9rUzIMcZQ')">▶ Watch</span>
                 </div>
             </div>
 
-            <!-- ========================================================== -->
-            <!-- 🟢 কার্ড ১০ (ScreenPal) — আপনার আইডি বসান                   -->
-            <!-- ========================================================== -->
             <div class="video-card">
-                <div class="thumb-wrap">
-                    <img src="https://img.youtube.com/vi/k4V3Mo61fJM/maxresdefault.jpg" alt="Video" loading="lazy" />
+                <div class="thumb-wrap" onclick="playVideo('k4V3Mo61fJM')">
+                    <img src="https://img.youtube.com/vi/k4V3Mo61fJM/maxresdefault.jpg" alt="Video" loading="lazy">
                 </div>
                 <div class="card-content">
-                    <span class="watch-link" onclick="playScreenPal('আপনার_আইডি_এখানে')">▶ Watch</span>
+                    <span class="watch-link" onclick="playVideo('k4V3Mo61fJM')">▶ Watch</span>
                 </div>
             </div>
 
-            <!-- ========================================================== -->
-            <!-- 🟢 কার্ড ১১ (ScreenPal) — আপনার আইডি বসান                   -->
-            <!-- ========================================================== -->
             <div class="video-card">
-                <div class="thumb-wrap">
-                    <img src="https://img.youtube.com/vi/OPf0YbXqDm0/maxresdefault.jpg" alt="Video" loading="lazy" />
+                <div class="thumb-wrap" onclick="playVideo('OPf0YbXqDm0')">
+                    <img src="https://img.youtube.com/vi/OPf0YbXqDm0/maxresdefault.jpg" alt="Video" loading="lazy">
                 </div>
                 <div class="card-content">
-                    <span class="watch-link" onclick="playScreenPal('আপনার_আইডি_এখানে')">▶ Watch</span>
+                    <span class="watch-link" onclick="playVideo('OPf0YbXqDm0')">▶ Watch</span>
                 </div>
             </div>
 
-            <!-- ========================================================== -->
-            <!-- 🟢 কার্ড ১২ (ScreenPal) — আপনার আইডি বসান                   -->
-            <!-- ========================================================== -->
             <div class="video-card">
-                <div class="thumb-wrap">
-                    <img src="https://img.youtube.com/vi/hT_nvWreIhg/maxresdefault.jpg" alt="Video" loading="lazy" />
+                <div class="thumb-wrap" onclick="playVideo('hT_nvWreIhg')">
+                    <img src="https://img.youtube.com/vi/hT_nvWreIhg/maxresdefault.jpg" alt="Video" loading="lazy">
                 </div>
                 <div class="card-content">
-                    <span class="watch-link" onclick="playScreenPal('আপনার_আইডি_এখানে')">▶ Watch</span>
+                    <span class="watch-link" onclick="playVideo('hT_nvWreIhg')">▶ Watch</span>
                 </div>
             </div>
 
-            <!-- ========================================================== -->
-            <!-- 🟢 কার্ড ১৩ (ScreenPal) — আপনার আইডি বসান                   -->
-            <!-- ========================================================== -->
             <div class="video-card">
-                <div class="thumb-wrap">
-                    <img src="https://img.youtube.com/vi/ktvTqknDobU/maxresdefault.jpg" alt="Video" loading="lazy" />
+                <div class="thumb-wrap" onclick="playVideo('ktvTqknDobU')">
+                    <img src="https://img.youtube.com/vi/ktvTqknDobU/maxresdefault.jpg" alt="Video" loading="lazy">
                 </div>
                 <div class="card-content">
-                    <span class="watch-link" onclick="playScreenPal('আপনার_আইডি_এখানে')">▶ Watch</span>
+                    <span class="watch-link" onclick="playVideo('ktvTqknDobU')">▶ Watch</span>
                 </div>
             </div>
 
-            <!-- ========================================================== -->
-            <!-- 🟢 কার্ড ১৪ (ScreenPal) — আপনার আইডি বসান                   -->
-            <!-- ========================================================== -->
             <div class="video-card">
-                <div class="thumb-wrap">
-                    <img src="https://img.youtube.com/vi/YQHsXMglC9A/maxresdefault.jpg" alt="Video" loading="lazy" />
+                <div class="thumb-wrap" onclick="playVideo('YQHsXMglC9A')">
+                    <img src="https://img.youtube.com/vi/YQHsXMglC9A/maxresdefault.jpg" alt="Video" loading="lazy">
                 </div>
                 <div class="card-content">
-                    <span class="watch-link" onclick="playScreenPal('আপনার_আইডি_এখানে')">▶ Watch</span>
+                    <span class="watch-link" onclick="playVideo('YQHsXMglC9A')">▶ Watch</span>
                 </div>
             </div>
 
-            <!-- ========================================================== -->
-            <!-- 🟢 কার্ড ১৫ (ScreenPal) — আপনার আইডি বসান                   -->
-            <!-- ========================================================== -->
             <div class="video-card">
-                <div class="thumb-wrap">
-                    <img src="https://img.youtube.com/vi/nfs8NYg7yQM/maxresdefault.jpg" alt="Video" loading="lazy" />
+                <div class="thumb-wrap" onclick="playVideo('nfs8NYg7yQM')">
+                    <img src="https://img.youtube.com/vi/nfs8NYg7yQM/maxresdefault.jpg" alt="Video" loading="lazy">
                 </div>
                 <div class="card-content">
-                    <span class="watch-link" onclick="playScreenPal('আপনার_আইডি_এখানে')">▶ Watch</span>
+                    <span class="watch-link" onclick="playVideo('nfs8NYg7yQM')">▶ Watch</span>
                 </div>
             </div>
 
-            <!-- ========================================================== -->
-            <!-- 🟢 কার্ড ১৬ (ScreenPal) — আপনার আইডি বসান                   -->
-            <!-- ========================================================== -->
             <div class="video-card">
-                <div class="thumb-wrap">
-                    <img src="https://img.youtube.com/vi/CevxZvSJLk8/maxresdefault.jpg" alt="Video" loading="lazy" />
+                <div class="thumb-wrap" onclick="playVideo('CevxZvSJLk8')">
+                    <img src="https://img.youtube.com/vi/CevxZvSJLk8/maxresdefault.jpg" alt="Video" loading="lazy">
                 </div>
                 <div class="card-content">
-                    <span class="watch-link" onclick="playScreenPal('আপনার_আইডি_এখানে')">▶ Watch</span>
+                    <span class="watch-link" onclick="playVideo('CevxZvSJLk8')">▶ Watch</span>
                 </div>
             </div>
 
-            <!-- ========================================================== -->
-            <!-- 🟢 কার্ড ১৭ (ScreenPal) — আপনার আইডি বসান                   -->
-            <!-- ========================================================== -->
             <div class="video-card">
-                <div class="thumb-wrap">
-                    <img src="https://img.youtube.com/vi/TgOu00Mf3kI/maxresdefault.jpg" alt="Video" loading="lazy" />
+                <div class="thumb-wrap" onclick="playVideo('TgOu00Mf3kI')">
+                    <img src="https://img.youtube.com/vi/TgOu00Mf3kI/maxresdefault.jpg" alt="Video" loading="lazy">
                 </div>
                 <div class="card-content">
-                    <span class="watch-link" onclick="playScreenPal('আপনার_আইডি_এখানে')">▶ Watch</span>
+                    <span class="watch-link" onclick="playVideo('TgOu00Mf3kI')">▶ Watch</span>
                 </div>
             </div>
 
-            <!-- ========================================================== -->
-            <!-- 🟢 কার্ড ১৮ (ScreenPal) — আপনার আইডি বসান                   -->
-            <!-- ========================================================== -->
             <div class="video-card">
-                <div class="thumb-wrap">
-                    <img src="https://img.youtube.com/vi/kJQP7kiw5Fk/maxresdefault.jpg" alt="Video" loading="lazy" />
-                </div
+                <div class="thumb-wrap" onclick="playVideo('kJQP7kiw5Fk')">
+                    <img src="https://img.youtube.com/vi/kJQP7kiw5Fk/maxresdefault.jpg" alt="Video" loading="lazy">
+                </div>
+                <div class="card-content">
+                    <span class="watch-link" onclick="playVideo('kJQP7kiw5Fk')">▶ Watch</span>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="thumb-wrap" onclick="playVideo('fLexgOxsZu0')">
+                    <img src="https://img.youtube.com/vi/fLexgOxsZu0/maxresdefault.jpg" alt="Video" loading="lazy">
+                </div>
+                <div class="card-content">
+                    <span class="watch-link" onclick="playVideo('fLexgOxsZu0')">▶ Watch</span>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="thumb-wrap" onclick="playVideo('L_jWHffIx5E')">
+                    <img src="https://img.youtube.com/vi/L_jWHffIx5E/maxresdefault.jpg" alt="Video" loading="lazy">
+                </div>
+                <div class="card-content">
+                    <span class="watch-link" onclick="playVideo('L_jWHffIx5E')">▶ Watch</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 VideoTube6t9. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal-bg" id="videoModal">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeVideo()">✕</button>
+            <div class="modal-video-wrap">
+                <iframe id="videoFrame" src="" allowfullscreen allow="autoplay; encrypted-media; fullscreen"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function playVideo(videoId) {
+            if (!videoId) return;
+            const iframe = document.getElementById('videoFrame');
+            iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+            document.getElementById('videoModal').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeVideo() {
+            document.getElementById('videoFrame').src = '';
+            document.getElementById('videoModal').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('videoModal').addEventListener('click', function(e) {
+            if (e.target === this) closeVideo();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeVideo();
+        });
+
+        console.log('✅ ২০টি YouTube ভিডিও কার্ড প্রস্তুত!');
+    </script>
+</body>
+</html>
