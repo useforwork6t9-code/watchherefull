@@ -189,6 +189,7 @@
             justify-content: center;
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
             transition: transform 0.15s;
+            pointer-events: none; /* 👈 প্লে বাটনে ক্লিক করলে থাম্বনেইলের ইভেন্ট কাজ করবে */
         }
 
         .thumb-wrap:hover .play-btn {
@@ -396,11 +397,13 @@
         <h2 class="section-title">Featured Videos</h2>
         <div class="video-grid">
 
-            <!-- কার্ড ১ (আপনার কাস্টম থাম্বনেইল) -->
+            <!-- কার্ড ১ -->
             <div class="video-card">
                 <div class="thumb-wrap" data-video-id="9bZkp7q19f0" onclick="openModal(this)">
-                    <img src="https://i.ibb.co.com/8LBLjR2x/1280x720-17643602.webp" alt="Custom Thumbnail" loading="lazy">
-                    <div class="play-overlay"><div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+                    <img src="https://i.ibb.co.com/8LBLjR2x/1280x720-17643602.webp" alt="Video" loading="lazy">
+                    <div class="play-overlay">
+                        <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+                    </div>
                 </div>
                 <div class="card-content">
                     <span class="watch-link" onclick="openModalFromLink(this)">▶ Watch</span>
@@ -411,7 +414,9 @@
             <div class="video-card">
                 <div class="thumb-wrap" data-video-id="JGwWNGJdvx8" onclick="openModal(this)">
                     <img src="https://img.youtube.com/vi/JGwWNGJdvx8/maxresdefault.jpg" alt="Video" loading="lazy">
-                    <div class="play-overlay"><div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+                    <div class="play-overlay">
+                        <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+                    </div>
                 </div>
                 <div class="card-content">
                     <span class="watch-link" onclick="openModalFromLink(this)">▶ Watch</span>
@@ -422,7 +427,9 @@
             <div class="video-card">
                 <div class="thumb-wrap" data-video-id="RgKAFK5djSk" onclick="openModal(this)">
                     <img src="https://img.youtube.com/vi/RgKAFK5djSk/maxresdefault.jpg" alt="Video" loading="lazy">
-                    <div class="play-overlay"><div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+                    <div class="play-overlay">
+                        <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+                    </div>
                 </div>
                 <div class="card-content">
                     <span class="watch-link" onclick="openModalFromLink(this)">▶ Watch</span>
@@ -433,7 +440,9 @@
             <div class="video-card">
                 <div class="thumb-wrap" data-video-id="XqZsoesa55w" onclick="openModal(this)">
                     <img src="https://img.youtube.com/vi/XqZsoesa55w/maxresdefault.jpg" alt="Video" loading="lazy">
-                    <div class="play-overlay"><div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+                    <div class="play-overlay">
+                        <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+                    </div>
                 </div>
                 <div class="card-content">
                     <span class="watch-link" onclick="openModalFromLink(this)">▶ Watch</span>
@@ -444,7 +453,9 @@
             <div class="video-card">
                 <div class="thumb-wrap" data-video-id="dQw4w9WgXcQ" onclick="openModal(this)">
                     <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Video" loading="lazy">
-                    <div class="play-overlay"><div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+                    <div class="play-overlay">
+                        <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+                    </div>
                 </div>
                 <div class="card-content">
                     <span class="watch-link" onclick="openModalFromLink(this)">▶ Watch</span>
@@ -455,7 +466,9 @@
             <div class="video-card">
                 <div class="thumb-wrap" data-video-id="z_HXoI-UAeU" onclick="openModal(this)">
                     <img src="https://img.youtube.com/vi/z_HXoI-UAeU/maxresdefault.jpg" alt="Video" loading="lazy">
-                    <div class="play-overlay"><div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+                    <div class="play-overlay">
+                        <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+                    </div>
                 </div>
                 <div class="card-content">
                     <span class="watch-link" onclick="openModalFromLink(this)">▶ Watch</span>
@@ -466,7 +479,9 @@
             <div class="video-card">
                 <div class="thumb-wrap" data-video-id="VuOeefClQQY" onclick="openModal(this)">
                     <img src="https://img.youtube.com/vi/VuOeefClQQY/maxresdefault.jpg" alt="Video" loading="lazy">
-                    <div class="play-overlay"><div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+                    <div class="play-overlay">
+                        <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+                    </div>
                 </div>
                 <div class="card-content">
                     <span class="watch-link" onclick="openModalFromLink(this)">▶ Watch</span>
@@ -477,7 +492,9 @@
             <div class="video-card">
                 <div class="thumb-wrap" data-video-id="s-vX_Ojn-10" onclick="openModal(this)">
                     <img src="https://img.youtube.com/vi/s-vX_Ojn-10/maxresdefault.jpg" alt="Video" loading="lazy">
-                    <div class="play-overlay"><div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+                    <div class="play-overlay">
+                        <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+                    </div>
                 </div>
                 <div class="card-content">
                     <span class="watch-link" onclick="openModalFromLink(this)">▶ Watch</span>
@@ -488,7 +505,9 @@
             <div class="video-card">
                 <div class="thumb-wrap" data-video-id="fJ9rUzIMcZQ" onclick="openModal(this)">
                     <img src="https://img.youtube.com/vi/fJ9rUzIMcZQ/maxresdefault.jpg" alt="Video" loading="lazy">
-                    <div class="play-overlay"><div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+                    <div class="play-overlay">
+                        <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+                    </div>
                 </div>
                 <div class="card-content">
                     <span class="watch-link" onclick="openModalFromLink(this)">▶ Watch</span>
@@ -499,7 +518,9 @@
             <div class="video-card">
                 <div class="thumb-wrap" data-video-id="k4V3Mo61fJM" onclick="openModal(this)">
                     <img src="https://img.youtube.com/vi/k4V3Mo61fJM/maxresdefault.jpg" alt="Video" loading="lazy">
-                    <div class="play-overlay"><div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+                    <div class="play-overlay">
+                        <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+                    </div>
                 </div>
                 <div class="card-content">
                     <span class="watch-link" onclick="openModalFromLink(this)">▶ Watch</span>
@@ -510,7 +531,9 @@
             <div class="video-card">
                 <div class="thumb-wrap" data-video-id="OPf0YbXqDm0" onclick="openModal(this)">
                     <img src="https://img.youtube.com/vi/OPf0YbXqDm0/maxresdefault.jpg" alt="Video" loading="lazy">
-                    <div class="play-overlay"><div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+                    <div class="play-overlay">
+                        <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+                    </div>
                 </div>
                 <div class="card-content">
                     <span class="watch-link" onclick="openModalFromLink(this)">▶ Watch</span>
@@ -521,7 +544,9 @@
             <div class="video-card">
                 <div class="thumb-wrap" data-video-id="hT_nvWreIhg" onclick="openModal(this)">
                     <img src="https://img.youtube.com/vi/hT_nvWreIhg/maxresdefault.jpg" alt="Video" loading="lazy">
-                    <div class="play-overlay"><div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+                    <div class="play-overlay">
+                        <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+                    </div>
                 </div>
                 <div class="card-content">
                     <span class="watch-link" onclick="openModalFromLink(this)">▶ Watch</span>
@@ -532,7 +557,9 @@
             <div class="video-card">
                 <div class="thumb-wrap" data-video-id="ktvTqknDobU" onclick="openModal(this)">
                     <img src="https://img.youtube.com/vi/ktvTqknDobU/maxresdefault.jpg" alt="Video" loading="lazy">
-                    <div class="play-overlay"><div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+                    <div class="play-overlay">
+                        <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+                    </div>
                 </div>
                 <div class="card-content">
                     <span class="watch-link" onclick="openModalFromLink(this)">▶ Watch</span>
@@ -543,7 +570,9 @@
             <div class="video-card">
                 <div class="thumb-wrap" data-video-id="YQHsXMglC9A" onclick="openModal(this)">
                     <img src="https://img.youtube.com/vi/YQHsXMglC9A/maxresdefault.jpg" alt="Video" loading="lazy">
-                    <div class="play-overlay"><div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+                    <div class="play-overlay">
+                        <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+                    </div>
                 </div>
                 <div class="card-content">
                     <span class="watch-link" onclick="openModalFromLink(this)">▶ Watch</span>
@@ -553,16 +582,4 @@
             <!-- কার্ড ১৫ -->
             <div class="video-card">
                 <div class="thumb-wrap" data-video-id="nfs8NYg7yQM" onclick="openModal(this)">
-                    <img src="https://img.youtube.com/vi/nfs8NYg7yQM/maxresdefault.jpg" alt="Video" loading="lazy">
-                    <div class="play-overlay"><div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
-                </div>
-                <div class="card-content">
-                    <span class="watch-link" onclick="openModalFromLink(this)">▶ Watch</span>
-                </div>
-            </div>
-
-            <!-- কার্ড ১৬ -->
-            <div class="video-card">
-                <div class="thumb-wrap" data-video-id="CevxZvSJLk8" onclick="openModal(this)">
-                    <img src="https://img.youtube.com/vi/CevxZvSJLk8/maxresdefault.jpg" alt="Video" loading="lazy">
-                    <div class="
+                    <img src="https://img.youtube.com/vi/nfs8NYg7yQM/maxre
