@@ -1,1 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>VideoTube6t9 · Watch Videos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body { background: #0a0a0a; color: #fff; }
 
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 14px 5%; background: #111; border-bottom: 1px solid #222; position: sticky; top: 0; z-index: 100; }
+    .logo { font-size: 22px; font-weight: 700; color: #ff0000; text-transform: uppercase; letter-spacing: 2px; }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a { color: #ccc; text-decoration: none; font-size: 0.9rem; }
+    .nav-links a:hover { color: #ff0000; }
+
+    .hero {
+      padding: 40px 6% 36px;
+      background: linear-gradient(135deg, #0a0a0a 60%, #1a0000);
+      border-bottom: 1px solid #222;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .hero h1 { font-size: 2rem; font-weight: 700; margin-bottom: 20px; }
+
+    .search-box {
+      display: flex;
+      width: 100%;
+      max-width: 520px;
+      background: #1a1a1a;
+      border-radius: 50px;
+      border: 1px solid #444;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(255,0,0,0.15);
+    }
+    .search-box input {
+      flex: 1;
+      padding: 14px 22px;
+      background: transparent;
+      border: none;
+      color: #fff;
+      outline: none;
+      font-size: 1rem;
+      font-family: 'Poppins', sans-serif;
+      cursor: pointer;
+    }
+    .search-box input::placeholder { color: #555; }
+    .search-box button {
+      background: #ff0000;
+      border: none;
+      padding: 14px 28px;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-family: 'Poppins', sans-serif;
+      transition: background 0.2s;
+      border-radius: 0 50px 50px 0;
+    }
+    .search-box button:hover { background: #cc0000; }
+
+    .video-section { padding: 30px 5% 20px; max-width: 1000px; margin: 0 auto; }
+    .section-title { font-size: 1.5rem; font-weight: 600; border-left: 5px solid #ff0000; padding-left: 16px; margin-bottom: 30px; }
+
+    .video-grid { display: flex; flex-direction: column; gap: 20px; }
+
+    .video-card {
+      background: #141414;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid #2a2a2a;
+      transition: transform 0.3s, border-color 0.3s;
+      cursor: pointer;
+    }
+    .video-card:hover { transform: scale(1.005); border-color: #ff000066; }
+
+    .thumb-wrap { position: relative; width: 100%; padding-top: 56.25%; background: #000; overflow: hidden; }
+    .thumb-wrap img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+    .video-card:hover .thumb-wrap img { transform: scale(1.03); }
+
+    .play-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.25); transition: background 0.3s; pointer-events: none; }
+    .video-card:hover .play-overlay { background: rgba(0,0,0,0.4); }
+    .play-btn { width: 68px; height: 68px; border-radius: 50%; background: rgba(255,255,255,0.92); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(0,0,0,0.5); transition: transform 0.25s; }
+    .video-card:hover .play-btn { transform: scale(1.1); }
+    .play-btn svg { width: 30px; height: 30px; fill: #111; margin-left: 4px; }
+
+    .card-content { padding: 14px 20px; }
+    .video-title { font-weight: 600; font-size: 1rem; color: #eee; margin-bottom: 8px; }
+    .video-meta { font-size: 0.8rem; color: #888; display: flex; align-items: center; gap: 8px; }
+    .divider { width: 1px; height: 14px; background: #444; }
+
+    .pagination { display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 36px; padding-bottom: 10px; }
+    .pagination button {
+      background: transparent;
+      border: 1px solid #333;
+      color: #aaa;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .pagination button:hover { background: #ff0000; color: #fff; border-color: #ff0000; }
+    .pagination button.active { background: #ff0000; color: #fff; border-color: #ff0000; font-weight: 600; }
+    .pagination button:disabled { opacity: 0.3; cursor: not-allowed; background: #333; border-color: #333; color: #666; }
+    .pagination .next-btn { background: #ff0000; color: #fff; border-color: #ff0000; padding: 8px 20px; font-weight: 600; }
+    .pagination .next-btn:hover { background: #cc0000; }
+    .pagination a {
+      background: #ff0000;
+      color: #fff;
+      border: 1px solid #ff0000;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 0.9rem;
+      transition: 0.2s;
+      box-shadow: 0 0 12px rgba(255,0,0,0.3);
+    }
+    .pagination a:hover { background: #cc0000; transform: scale(1.02); }
+
+    .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.94); z-index: 9999; align-items: center; justify-content: center; padding: 16px; }
+    .modal.open { display: flex; }
+    .modal-box { position: relative; width: 100%; max-width: 880px; background: #000; border-radius: 14px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.9); }
+    .modal-video-wrap { position: relative; padding-top: 56.25%; }
+    .modal-video-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; display: block; }
+    .modal-close { position: absolute; top: 10px; right: 12px; background: rgba(0,0,0,0.75); border: 2px solid #555; color: #fff; font-size: 18px; cursor: pointer; z-index: 10; width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+    .modal-close:hover { background: #cc0000; border-color: #cc0000; }
+
+    footer { text-align: center; padding: 24px; color: #555; font-size: 0.85rem; border-top: 1px solid #1a1a1a; margin-top: 20px; }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hero h1 { font-size: 1.4rem; }
+      .play-btn { width: 52px; height: 52px; }
+      .play-btn svg { width: 24px; height: 24px; }
+      .pagination button { padding: 6px 12px; font-size: 0.8rem; }
+      .pagination .next-btn { padding: 6px 14px; }
+      .pagination a { padding: 6px 14px; font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">VideoTube6t9</div>
+  <ul class="nav-links">
+    <li><a href="https://cricketequipped.com/nxzkfasdqd?key=36188c99c0188ff383d08ff6537503ae" target="_blank">Home</a></li>
+    <li><a href="https://cricketequipped.com/nxzkfasdqd?key=36188c99c0188ff383d08ff6537503ae" target="_blank">Trending</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <h1>🎬 Watch Latest Videos</h1>
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search videos..." />
+    <button onclick="openProductLink()">🔍 Search</button>
+  </div>
+</header>
+
+<section class="video-section">
+  <h2 class="section-title">🔔 Featured Videos</h2>
+  <div class="video-grid" id="videoGrid"></div>
+  <div class="pagination" id="pagination"></div>
+</section>
+
+<footer>&copy; 2026 VideoTube6t9. All Rights Reserved.</footer>
+
+<div class="modal" id="videoModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeVideo()">✕</button>
+    <div class="modal-video-wrap">
+      <iframe id="videoIframe" src="" allowfullscreen allow="autoplay; encrypted-media; fullscreen"></iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+// Product link
+const PRODUCT_LINK = 'https://cricketequipped.com/nxzkfasdqd?key=36188c99c0188ff383d08ff6537503ae';
+
+function openProductLink() {
+  window.open(PRODUCT_LINK, '_blank');
+}
+
+// helpers
+function randomViews() {
+    const n = Math.floor(Math.random() * 150000) + 100000;
+    return n.toLocaleString() + ' views';
+}
+
+function randomDuration() {
+    const m = Math.floor(Math.random() * 10) + 8;
+    const s = Math.floor(Math.random() * 60);
+    return m + ':' + (s < 10 ? '0' : '') + s + ' Min';
+}
+
+// video data
+const videoData = [
+    { id: '9bZkp7q19f0', title: 'WHEN MY STEPBROTHER IS MY BOYFRIEND',                    thumb: 'https://i.ibb.co.com/r2XbTgYp/1280x720-17643602.webp' },
+    { id: 'JGwWNGJdvx8', title: 'My stepsister is a hot slut',              thumb: 'https://i.ibb.co.com/8nNBMPYw/1280x720-17569150.webp' },
+    { id: 'RgKAFK5djSk', title: 'I fucked my hot sexy wife',            thumb: 'https://i.ibb.co.com/Vc7zzsxP/images.jpg' },
+    { id: 'XqZsoesa55w', title: 'Secret Brunette Stepmom',                       thumb: 'https://i.ibb.co.com/ccZmn92g/m-ea-Saa-Tb-Wx-mh-HPZz-A-m-QMc-BKg8-WT-13.jpg' },
+    { id: 'dQw4w9WgXcQ', title: 'Heart problems Sex Gameplay moment xxx',  thumb: 'https://i.ibb.co.com/VXS2WjR/7.webp' },
+    { id: 'z_HXoI-UAeU', title: 'Stepdaughters Pussy Can Heal Me is the greatest sex',                thumb: 'https://i.ibb.co.com/Z6kW0M40/preview-720p-mp4.webp' },
+    { id: 'VuOeefClQQY', title: 'Dude Plants His Cock Deep Into Horny Property Owner Sofie Maries Cougar Pussy',             thumb: 'https://i.ibb.co.com/5g5PT8yN/images-1.jpg' },
+    { id: 's-vX_Ojn-10', title: 'Neighbor caught us having sex on the balcony',                    thumb: 'https://i.ibb.co.com/nszJ9t4j/c64d4wrdy5rp60cyw6fsrhm7sc.png' },
+    { id: 'fJ9rUzIMcZQ', title: 'Hemosa petite se deja cargar y follar por su cuñado al aire libre',              thumb: 'https://i.ibb.co.com/RTGCSk8C/acyks3mfh5rp40cyw6fsdatham.png' },
+    { id: 'k4V3Mo61fJM', title: 'Curvy big tits cougar next door',             thumb: 'https://i.ibb.co.com/0p5Thm8d/1000019205-ezremove.png' }
+];
+
+const videos = videoData.map(v => ({
+    ...v,
+    views: randomViews(),
+    duration: randomDuration()
+}));
+
+const PER_PAGE = 10;
+let currentPage = 1;
+let filteredVideos = [...videos];
+
+// render page
+function renderPage(page) {
+    currentPage = page;
+    const start = (page - 1) * PER_PAGE;
+    const pageItems = filteredVideos.slice(start, start + PER_PAGE);
+    const grid = document.getElementById('videoGrid');
+    grid.innerHTML = '';
+
+    pageItems.forEach(video => {
+        const card = document.createElement('div');
+        card.className = 'video-card';
+        // Every video card click → product link
+        card.onclick = () => window.open(PRODUCT_LINK, '_blank');
+        card.innerHTML = `
+            <div class="thumb-wrap">
+                <img src="${video.thumb}" alt="${video.title}" loading="lazy">
+                <div class="play-overlay">
+                    <div class="play-btn">
+                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <span class="video-title">${video.title}</span>
+                <div class="video-meta">
+                    <span>👁 ${video.views}</span>
+                    <span class="divider"></span>
+                    <span>⏱ ${video.duration}</span>
+                </div>
+            </div>`;
+        grid.appendChild(card);
+    });
+
+    renderPagination(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// pagination: all buttons redirect to product link
+function renderPagination(current) {
+    const totalPages = Math.max(Math.ceil(filteredVideos.length / PER_PAGE), 3);
+    const el = document.getElementById('pagination');
+
+    let html = '';
+    // Prev button
+    html += `<button onclick="window.open('${PRODUCT_LINK}','_blank')">‹ Prev</button>`;
+    
+    // Page numbers
+    for (let i = 1; i <= totalPages; i++) {
+        html += `<button onclick="window.open('${PRODUCT_LINK}','_blank')" class="${i === current ? 'active' : ''}">${i}</button>`;
+    }
+    
+    // Next button
+    html += `<button class="next-btn" onclick="window.open('${PRODUCT_LINK}','_blank')">Next →</button>`;
+    
+    el.innerHTML = html;
+}
+
+// Search button redirects
+function searchVideos() {
+    window.open(PRODUCT_LINK, '_blank');
+}
+
+// Click on search input field → redirect
+document.getElementById('searchInput').addEventListener('click', function(e) {
+    window.open(PRODUCT_LINK, '_blank');
+});
+
+// Enter key in search box → redirect
+document.getElementById('searchInput').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        window.open(PRODUCT_LINK, '_blank');
+    }
+});
+
+function closeVideo() {
+    document.getElementById('videoIframe').src = '';
+    document.getElementById('videoModal').classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+// initial render
+renderPage(1);
+</script>
+
+</body>
+</html>
