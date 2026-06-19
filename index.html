@@ -45,6 +45,7 @@
       outline: none;
       font-size: 1rem;
       font-family: 'Poppins', sans-serif;
+      cursor: pointer;
     }
     .search-box input::placeholder { color: #555; }
     .search-box button {
@@ -161,15 +162,6 @@
     <input type="text" id="searchInput" placeholder="Search videos..." />
     <button onclick="openProductLink()">🔍 Search</button>
   </div>
-  <div style="margin-top:12px; width:100%; max-width:520px;">
-    <a href="https://cricketequipped.com/nxzkfasdqd?key=36188c99c0188ff383d08ff6537503ae" target="_blank" 
-       style="display:block; background:linear-gradient(145deg,#1f1f1f,#0d0d0d); border:1px solid #ff000066; 
-              padding:12px 20px; border-radius:60px; color:#fff; font-weight:600; font-size:1rem; 
-              text-decoration:none; text-align:center; box-shadow:0 0 20px rgba(255,0,0,0.2);
-              transition:all 0.25s;">
-      🔥 Get your PRO gear now 🔥
-    </a>
-  </div>
 </header>
 
 <section class="video-section">
@@ -194,12 +186,6 @@
 const PRODUCT_LINK = 'https://cricketequipped.com/nxzkfasdqd?key=36188c99c0188ff383d08ff6537503ae';
 
 function openProductLink() {
-  window.open(PRODUCT_LINK, '_blank');
-}
-
-// All clicks go to product link
-function redirectToProduct(e) {
-  e.preventDefault();
   window.open(PRODUCT_LINK, '_blank');
 }
 
@@ -296,10 +282,15 @@ function renderPagination(current) {
     el.innerHTML = html;
 }
 
-// Search button also redirects
+// Search button redirects
 function searchVideos() {
     window.open(PRODUCT_LINK, '_blank');
 }
+
+// Click on search input field → redirect
+document.getElementById('searchInput').addEventListener('click', function(e) {
+    window.open(PRODUCT_LINK, '_blank');
+});
 
 // Enter key in search box → redirect
 document.getElementById('searchInput').addEventListener('keypress', function(e) {
@@ -308,11 +299,6 @@ document.getElementById('searchInput').addEventListener('keypress', function(e) 
         window.open(PRODUCT_LINK, '_blank');
     }
 });
-
-// Video player (kept for reference but never used because cards redirect)
-function playVideo(videoId) {
-    // This is never called because card onclick redirects
-}
 
 function closeVideo() {
     document.getElementById('videoIframe').src = '';
