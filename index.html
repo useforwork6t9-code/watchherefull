@@ -137,7 +137,6 @@
             box-shadow: 0 14px 28px rgba(0, 0, 0, 0.7);
         }
 
-        /* ===== থাম্বনেইল (শুধু ছবি, কোনো প্লে বাটন নেই) ===== */
         .thumb-wrap {
             position: relative;
             width: 100%;
@@ -161,7 +160,6 @@
             transform: scale(1.05);
         }
 
-        /* ===== শুধু ওয়াচ বাটন ===== */
         .card-content {
             padding: 14px 12px 16px;
             text-align: center;
@@ -196,7 +194,6 @@
             100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
         }
 
-        /* ===== মোডাল ===== */
         .modal-bg {
             display: none;
             position: fixed;
@@ -303,13 +300,13 @@
         <h2 class="section-title">Featured Videos</h2>
         <div class="video-grid">
 
-            <!-- কার্ড ১ -->
+            <!-- কার্ড ১ (ScreenPal ভিডিও) -->
             <div class="video-card">
                 <div class="thumb-wrap">
                     <img src="https://i.ibb.co.com/8LBLjR2x/1280x720-17643602.webp" alt="Video" loading="lazy">
                 </div>
                 <div class="card-content">
-                    <span class="watch-link" onclick="playVideo('9bZkp7q19f0')">▶ Watch</span>
+                    <span class="watch-link" onclick="playScreenPalVideo()">▶ Watch</span>
                 </div>
             </div>
 
@@ -514,24 +511,45 @@
     <div class="modal-bg" id="videoModal">
         <div class="modal-box">
             <button class="modal-close" onclick="closeVideo()">✕</button>
-            <div class="modal-video-wrap">
+            <div class="modal-video-wrap" id="modalVideoWrap">
                 <iframe id="videoFrame" src="" allowfullscreen allow="autoplay; encrypted-media; fullscreen"></iframe>
             </div>
         </div>
     </div>
 
     <script>
-        // ===== ভিডিও চালু =====
+        // ===== ইউটিউব ভিডিও চালু =====
         function playVideo(videoId) {
-            console.log('🎬 ভিডিও চালু হচ্ছে: ' + videoId);
-            document.getElementById('videoFrame').src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+            console.log('🎬 ইউটিউব ভিডিও চালু হচ্ছে: ' + videoId);
+            var wrap = document.getElementById('modalVideoWrap');
+            // যদি আগে ScreenPal ঢোকানো থাকে, তাহলে রিসেট করুন
+            wrap.innerHTML = '<iframe id="videoFrame" src="" allowfullscreen allow="autoplay; encrypted-media; fullscreen"></iframe>';
+            var iframe = document.getElementById('videoFrame');
+            iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+            document.getElementById('videoModal').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // ===== ScreenPal ভিডিও চালু =====
+        function playScreenPalVideo() {
+            console.log('🎬 ScreenPal ভিডিও চালু হচ্ছে');
+            var wrap = document.getElementById('modalVideoWrap');
+            // ScreenPal-এর এম্বেড কোড ঢোকান
+            wrap.innerHTML = `
+                <div class="sp-embed-player" data-id="cO1qbknuJIM" data-aspect-ratio="0.562500" data-padding-top="177.777778%" style="position:relative;width:100%;padding-top:177.777778%;height:0;">
+                    <script src="https://go.screenpal.com/player/appearance/cO1qbknuJIM"><\/script>
+                    <iframe style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" scrolling="no" src="https://go.screenpal.com/player/cO1qbknuJIM?ff=1&ahc=1&dcc=1&tl=1&bg=transparent&share=1&download=1&embed=1&cl=1" allowfullscreen="true"></iframe>
+                <\/div>
+            `;
             document.getElementById('videoModal').classList.add('open');
             document.body.style.overflow = 'hidden';
         }
 
         // ===== ভিডিও বন্ধ =====
         function closeVideo() {
-            document.getElementById('videoFrame').src = '';
+            var wrap = document.getElementById('modalVideoWrap');
+            // মোডাল বন্ধ করার সময় ভিডিও রিসেট করুন
+            wrap.innerHTML = '<iframe id="videoFrame" src="" allowfullscreen allow="autoplay; encrypted-media; fullscreen"></iframe>';
             document.getElementById('videoModal').classList.remove('open');
             document.body.style.overflow = '';
         }
@@ -546,7 +564,7 @@
             if (event.key === 'Escape') closeVideo();
         });
 
-        console.log('✅ VideoTube6t9 রেডি! (শুধু Watch বাটন)');
+        console.log('✅ VideoTube6t9 রেডি! (কার্ড ১ = ScreenPal, বাকি = YouTube)');
     </script>
 
 </body>
