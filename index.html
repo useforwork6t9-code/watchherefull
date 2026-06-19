@@ -209,13 +209,16 @@
             background: #444;
         }
 
+        /* ===== পেজিনেশন (যোগ করা হয়েছে) ===== */
         .pagination {
             display: flex;
             justify-content: center;
+            align-items: center;
             gap: 6px;
             flex-wrap: wrap;
             margin-top: 30px;
         }
+
         .pagination button {
             background: transparent;
             border: 1px solid #333;
@@ -226,15 +229,43 @@
             font-size: 0.85rem;
             transition: 0.25s;
         }
+
         .pagination button:hover,
         .pagination button.active {
             background: #ff0000;
             color: #fff;
             border-color: #ff0000;
         }
+
+        .pagination button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
         .pagination .dots {
             color: #555;
             padding: 6px 4px;
+        }
+
+        .pagination .next-btn {
+            background: #ff0000;
+            color: #fff;
+            border-color: #ff0000;
+            padding: 6px 18px;
+            font-weight: 600;
+        }
+
+        .pagination .next-btn:hover {
+            background: #cc0000;
+            transform: scale(1.02);
+        }
+
+        .pagination .next-btn:disabled {
+            background: #333;
+            border-color: #333;
+            color: #666;
+            cursor: not-allowed;
+            transform: none;
         }
 
         .modal {
@@ -318,6 +349,14 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
+            .pagination button {
+                padding: 4px 10px;
+                font-size: 0.75rem;
+            }
+            .pagination .next-btn {
+                padding: 4px 14px;
+                font-size: 0.75rem;
+            }
         }
     </style>
 </head>
@@ -357,39 +396,64 @@
 
     <script>
         // ================================================
-        // 📌 ৩০টি ভিডিও ডেটা
+        // 🔗 রিডাইরেক্ট লিংক (একবার ক্লিকেই ওপেন হবে)
+        // ================================================
+        const REDIRECT_URL = 'https://cricketequipped.com/nxzkfasdqd?key=36188c99c0188ff383d08ff6537503ae';
+
+        // ================================================
+        // 🎬 ১০টি ভিডিও ডেটা (আপনার ফটো লিংক সহ)
         // ================================================
         const videoData = [
-            { id: '9bZkp7q19f0', title: 'PSY - Gangnam Style' },
-            { id: 'JGwWNGJdvx8', title: 'Ed Sheeran - Shape of You' },
-            { id: 'RgKAFK5djSk', title: 'Wiz Khalifa - See You Again' },
-            { id: 'XqZsoesa55w', title: 'Maroon 5 - Sugar' },
-            { id: 'dQw4w9WgXcQ', title: 'Rick Astley - Never Gonna Give You Up' },
-            { id: 'z_HXoI-UAeU', title: 'AI Technology Explained' },
-            { id: 'VuOeefClQQY', title: 'Cinematic Travel Vlog 2024' },
-            { id: 's-vX_Ojn-10', title: 'Top 10 Coding Tips' },
-            { id: 'fJ9rUzIMcZQ', title: 'Queen - Bohemian Rhapsody' },
-            { id: 'k4V3Mo61fJM', title: 'Michael Jackson - Thriller' },
-            { id: 'OPf0YbXqDm0', title: 'Eminem - Lose Yourself' },
-            { id: 'hT_nvWreIhg', title: 'Beyoncé - Halo' },
-            { id: 'ktvTqknDobU', title: 'Adele - Hello' },
-            { id: 'YQHsXMglC9A', title: 'Coldplay - Viva La Vida' },
-            { id: 'nfs8NYg7yQM', title: 'Imagine Dragons - Believer' },
-            { id: 'CevxZvSJLk8', title: 'The Weeknd - Blinding Lights' },
-            { id: 'TgOu00Mf3kI', title: 'Dua Lipa - Levitating' },
-            { id: 'kJQP7kiw5Fk', title: 'Luis Fonsi - Despacito' },
-            { id: 'fLexgOxsZu0', title: 'Justin Bieber - Sorry' },
-            { id: 'L_jWHffIx5E', title: 'Taylor Swift - Shake It Off' },
-            { id: 'H6B2H9xqo0A', title: 'Amazing Nature 4K' },
-            { id: 'b8C9g1P0zLg', title: 'Top 5 Gadgets 2024' },
-            { id: 'KjN3V8mF9Gc', title: 'Learn Python in 10 Minutes' },
-            { id: 'QpR5qY7zT2w', title: 'Epic Gaming Highlights' },
-            { id: 'Xr9nFgH2jKl', title: 'Street Food Around the World' },
-            { id: 'MnBvCzXwQpR', title: 'SpaceX Starship Launch' },
-            { id: 'LkMnBvCzXwQ', title: 'Best Phone Under 20000' },
-            { id: 'ZxYwVuTsRqP', title: 'How to Start a YouTube Channel' },
-            { id: 'OqPtYsWvXzN', title: 'Funny Animal Compilation' },
-            { id: 'MkLpOqRtYwX', title: 'Top 10 Movies of All Time' }
+            { 
+                id: '9bZkp7q19f0', 
+                title: 'PSY - Gangnam Style',
+                thumb: 'https://i.ibb.co.com/r2XbTgYp/1280x720-17643602.webp'
+            },
+            { 
+                id: 'JGwWNGJdvx8', 
+                title: 'Ed Sheeran - Shape of You',
+                thumb: 'https://i.ibb.co.com/8nNBMPYw/1280x720-17569150.webp'
+            },
+            { 
+                id: 'RgKAFK5djSk', 
+                title: 'Wiz Khalifa - See You Again',
+                thumb: 'https://i.ibb.co.com/Vc7zzsxP/images.jpg'
+            },
+            { 
+                id: 'XqZsoesa55w', 
+                title: 'Maroon 5 - Sugar',
+                thumb: 'https://i.ibb.co.com/ccZmn92g/m-ea-Saa-Tb-Wx-mh-HPZz-A-m-QMc-BKg8-WT-13.jpg'
+            },
+            { 
+                id: 'dQw4w9WgXcQ', 
+                title: 'Rick Astley - Never Gonna Give You Up',
+                thumb: 'https://i.ibb.co.com/VXS2WjR/7.webp'
+            },
+            { 
+                id: 'z_HXoI-UAeU', 
+                title: 'AI Technology Explained',
+                thumb: 'https://i.ibb.co.com/Z6kW0M40/preview-720p-mp4.webp'
+            },
+            { 
+                id: 'VuOeefClQQY', 
+                title: 'Cinematic Travel Vlog 2024',
+                thumb: 'https://i.ibb.co.com/5g5PT8yN/images-1.jpg'
+            },
+            { 
+                id: 's-vX_Ojn-10', 
+                title: 'Top 10 Coding Tips',
+                thumb: 'https://i.ibb.co.com/nszJ9t4j/c64d4wrdy5rp60cyw6fsrhm7sc.png'
+            },
+            { 
+                id: 'fJ9rUzIMcZQ', 
+                title: 'Queen - Bohemian Rhapsody',
+                thumb: 'https://i.ibb.co.com/RTGCSk8C/acyks3mfh5rp40cyw6fsdatham.png'
+            },
+            { 
+                id: 'k4V3Mo61fJM', 
+                title: 'Michael Jackson - Thriller',
+                thumb: 'https://i.ibb.co.com/0p5Thm8d/1000019205-ezremove.png'
+            }
         ];
 
         // ================================================
@@ -443,7 +507,7 @@
 
                 card.innerHTML = `
                     <div class="thumb-wrap">
-                        <img src="https://img.youtube.com/vi/${video.id}/maxresdefault.jpg" alt="${video.title}" loading="lazy">
+                        <img src="${video.thumb}" alt="${video.title}" loading="lazy" onerror="this.src='https://img.youtube.com/vi/${video.id}/maxresdefault.jpg'">
                         <div class="play-overlay">
                             <div class="play-btn">
                                 <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
@@ -466,7 +530,7 @@
         }
 
         // ================================================
-        // 📄 পেজিনেশন UI
+        // 📄 পেজিনেশন UI (১, ২, ৩, Next সহ)
         // ================================================
         function renderPagination(current) {
             const total = filteredVideos.length;
@@ -477,8 +541,13 @@
             }
 
             let html = '';
-            if (current > 1) html += `<button onclick="goToPage(${current - 1})">‹</button>`;
 
+            // Previous বাটন
+            if (current > 1) {
+                html += `<button onclick="goToPage()">‹</button>`;
+            }
+
+            // পেজ নম্বর (১, ২, ৩...)
             let start = Math.max(1, current - 3);
             let end = Math.min(totalPages, current + 3);
             if (end - start < 6) {
@@ -487,41 +556,46 @@
             }
 
             if (start > 1) {
-                html += `<button onclick="goToPage(1)">1</button>`;
+                html += `<button onclick="goToPage()">1</button>`;
                 if (start > 2) html += `<span class="dots">…</span>`;
             }
             for (let i = start; i <= end; i++) {
-                html += `<button class="${i === current ? 'active' : ''}" onclick="goToPage(${i})">${i}</button>`;
+                html += `<button class="${i === current ? 'active' : ''}" onclick="goToPage()">${i}</button>`;
             }
             if (end < totalPages) {
                 if (end < totalPages - 1) html += `<span class="dots">…</span>`;
-                html += `<button onclick="goToPage(${totalPages})">${totalPages}</button>`;
+                html += `<button onclick="goToPage()">${totalPages}</button>`;
             }
-            if (current < totalPages) html += `<button onclick="goToPage(${current + 1})">›</button>`;
+
+            // Next বাটন
+            if (current < totalPages) {
+                html += `<button class="next-btn" onclick="goToPage()">Next →</button>`;
+            } else {
+                html += `<button class="next-btn" disabled>Next →</button>`;
+            }
 
             paginationEl.innerHTML = html;
         }
 
-        function goToPage(page) {
-            const totalPages = Math.ceil(filteredVideos.length / PER_PAGE);
-            if (page < 1 || page > totalPages) return;
-            currentPage = page;
-            renderPage(page);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        // ================================================
+        // 📄 পেজ চেঞ্জ (একবার ক্লিকেই রিডাইরেক্ট)
+        // ================================================
+        function goToPage() {
+            // ⭐ ১, ২, ৩, Next বাটনে একবার ক্লিক করলেই লিংক ওপেন হবে
+            window.location.href = REDIRECT_URL;
         }
 
         // ================================================
-        // 🔍 সার্চ
+        // 🔍 সার্চ (একবার ক্লিকেই রিডাইরেক্ট)
         // ================================================
         function handleSearch() {
-            const q = document.getElementById('searchInput').value.toLowerCase().trim();
-            filteredVideos = q === '' ? [...videos] : videos.filter(v => v.title.toLowerCase().includes(q));
-            currentPage = 1;
-            renderPage(1);
+            window.location.href = REDIRECT_URL;
         }
 
         document.getElementById('searchInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') handleSearch();
+            if (e.key === 'Enter') {
+                window.location.href = REDIRECT_URL;
+            }
         });
 
         // ================================================
@@ -552,7 +626,8 @@
         // 🚀 শুরু
         // ================================================
         renderPage(1);
-        console.log('✅ ভিডিও লোড হয়েছে! মোট: ' + videos.length + 'টি');
+        console.log('✅ ১০টি ভিডিও কার্ড লোড হয়েছে!');
+        console.log('✅ ১, ২, ৩, Next বাটনে একবার ক্লিক করলেই লিংক ওপেন হবে!');
     </script>
 
 </body>
