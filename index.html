@@ -207,23 +207,13 @@
     }
 
     .card-content {
-      padding: 12px 12px 14px;
+      padding: 14px 12px 16px;
+      text-align: center;
     }
 
-    .video-title {
-      font-size: clamp(0.8rem, 2.5vw, 0.95rem);
-      font-weight: 600;
-      color: #f0f0f0;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    /* 👇 নতুন স্টাইল: ওয়াচ ফুল ভিডিও লিংক */
     .watch-link {
       display: inline-block;
-      margin-top: 8px;
-      font-size: 0.75rem;
+      font-size: 0.85rem;
       font-weight: 600;
       color: #ff0000;
       text-decoration: none;
@@ -231,6 +221,7 @@
       transition: color 0.2s;
       cursor: pointer;
       border-bottom: 2px solid transparent;
+      padding: 4px 0;
     }
 
     .watch-link:hover {
@@ -346,48 +337,44 @@
 
       <!-- 🎬 Card 1 -->
       <div class="video-card">
-        <div class="thumb-wrap" data-video-id="z_HXoI-UAeU" onclick="openModal(this)">
-          <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=500&q=60" alt="AI Technology" loading="lazy">
+        <div class="thumb-wrap" data-video-id="9bZkp7q19f0" onclick="openModal(this)">
+          <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=500&q=60" alt="Video" loading="lazy">
           <div class="play-overlay"><div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
         </div>
         <div class="card-content">
-          <div class="video-title">The Future of AI Technology</div>
           <span class="watch-link" onclick="openModalFromLink(this)">▶ Watch Full Video</span>
         </div>
       </div>
 
       <!-- 🎬 Card 2 -->
       <div class="video-card">
-        <div class="thumb-wrap" data-video-id="VuOeefClQQY" onclick="openModal(this)">
-          <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=500&q=60" alt="Travel Vlog" loading="lazy">
+        <div class="thumb-wrap" data-video-id="JGwWNGJdvx8" onclick="openModal(this)">
+          <img src="https://images.unsplash.com/photo-1535016120720-40c646be5580?auto=format&fit=crop&w=500&q=60" alt="Video" loading="lazy">
           <div class="play-overlay"><div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
         </div>
         <div class="card-content">
-          <div class="video-title">Cinematic Travel Vlog 2024</div>
           <span class="watch-link" onclick="openModalFromLink(this)">▶ Watch Full Video</span>
         </div>
       </div>
 
       <!-- 🎬 Card 3 -->
       <div class="video-card">
-        <div class="thumb-wrap" data-video-id="s-vX_Ojn-10" onclick="openModal(this)">
-          <img src="https://images.unsplash.com/photo-1492691523567-6119e289df3a?auto=format&fit=crop&w=500&q=60" alt="Coding Tips" loading="lazy">
+        <div class="thumb-wrap" data-video-id="RgKAFK5djSk" onclick="openModal(this)">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=500&q=60" alt="Video" loading="lazy">
           <div class="play-overlay"><div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
         </div>
         <div class="card-content">
-          <div class="video-title">Top 10 Coding Tips</div>
           <span class="watch-link" onclick="openModalFromLink(this)">▶ Watch Full Video</span>
         </div>
       </div>
 
       <!-- 🎬 Card 4 -->
       <div class="video-card">
-        <div class="thumb-wrap" data-video-id="YOUR_VIDEO_ID_4" onclick="openModal(this)">
-          <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=500&q=60" alt="Movie Trailer" loading="lazy">
+        <div class="thumb-wrap" data-video-id="XqZsoesa55w" onclick="openModal(this)">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=500&q=60" alt="Video" loading="lazy">
           <div class="play-overlay"><div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
         </div>
         <div class="card-content">
-          <div class="video-title">Epic Movie Trailer</div>
           <span class="watch-link" onclick="openModalFromLink(this)">▶ Watch Full Video</span>
         </div>
       </div>
@@ -410,11 +397,10 @@
   </div>
 
   <script>
-    // থাম্বনেইলে ক্লিক করলে
     function openModal(thumb) {
       var videoId = thumb.getAttribute('data-video-id');
       if (!videoId || videoId.startsWith('YOUR_')) {
-        alert('🎬 এই কার্ডে ভিডিও এখনো বসানো হয়নি। (দয়া করে "YOUR_VIDEO_ID_4" এর জায়গায় একটি আসল YouTube ID দিন)');
+        alert('🎬 এই কার্ডে ভিডিও এখনো বসানো হয়নি।');
         return;
       }
       document.getElementById('modalIframe').src =
@@ -423,7 +409,6 @@
       document.body.style.overflow = 'hidden';
     }
 
-    // "Watch Full Video" লিংকে ক্লিক করলে
     function openModalFromLink(linkElement) {
       var card = linkElement.closest('.video-card');
       var thumb = card.querySelector('.thumb-wrap');
