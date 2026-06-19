@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <title>VideoTube6t9 · Watch Videos</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <title>VideoTube6t9 · Premium Video</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
     <style>
         * {
             margin: 0;
@@ -12,135 +12,181 @@
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
         }
+
         body {
-            background: #0a0a0a;
-            color: #fff;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
         }
 
-        /* ===== নেভিগেশন ===== */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 14px 5%;
-            background: #111;
-            border-bottom: 1px solid #222;
+            background: rgba(0, 0, 0, 0.95);
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: 1px solid #2a2a2a;
         }
+
         .logo {
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 700;
             color: #ff0000;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
+
         .nav-links {
+            list-style: none;
             display: flex;
             gap: 24px;
-            list-style: none;
         }
+
         .nav-links a {
-            color: #ccc;
             text-decoration: none;
+            color: #f0f0f0;
             font-size: 0.9rem;
+            transition: color 0.3s;
         }
+
         .nav-links a:hover {
             color: #ff0000;
         }
 
-        /* ===== হিরো সেকশন ===== */
         .hero {
-            padding: 30px 6% 20px;
-            background: linear-gradient(135deg, #0a0a0a 60%, #1a0000);
-            border-bottom: 1px solid #222;
-        }
-        .hero h1 {
-            font-size: 2rem;
-            font-weight: 700;
-        }
-        .hero p {
-            color: #aaa;
-            margin-top: 4px;
+            min-height: 28vh;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.5)),
+                url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px 6% 24px;
+            border-bottom: 2px solid #222;
         }
 
-        /* ===== সার্চ বক্স ===== */
+        .hero h1 {
+            font-size: clamp(1.3rem, 3.5vw, 2.4rem);
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .hero p {
+            max-width: 500px;
+            font-size: clamp(0.8rem, 1.5vw, 1rem);
+            color: #d0d0d0;
+            font-weight: 300;
+            margin-bottom: 12px;
+        }
+
+        .search-container {
+            width: 100%;
+            max-width: 480px;
+        }
+
         .search-box {
             display: flex;
-            max-width: 420px;
-            margin-top: 12px;
-            background: #1a1a1a;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid #333;
             border-radius: 50px;
-            border: 1px solid #333;
-            overflow: hidden;
+            padding: 2px 4px 2px 18px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            backdrop-filter: blur(6px);
         }
+
+        .search-box:focus-within {
+            border-color: #ff0000;
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.15);
+        }
+
         .search-box input {
             flex: 1;
-            padding: 10px 18px;
             background: transparent;
             border: none;
-            color: #fff;
             outline: none;
+            color: #fff;
             font-size: 0.9rem;
+            padding: 10px 0;
+            font-weight: 300;
         }
+
         .search-box input::placeholder {
-            color: #666;
+            color: #888;
         }
+
         .search-box button {
             background: #ff0000;
             border: none;
-            padding: 10px 22px;
+            border-radius: 50px;
+            padding: 8px 20px;
             color: #fff;
             font-weight: 600;
+            font-size: 0.8rem;
             cursor: pointer;
-            font-size: 0.85rem;
-        }
-        .search-box button:hover {
-            background: #cc0000;
+            transition: background 0.3s, transform 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
         }
 
-        /* ===== ভিডিও সেকশন ===== */
+        .search-box button:hover {
+            background: #cc0000;
+            transform: scale(1.02);
+        }
+
+        .search-box button svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
         .video-section {
             padding: 30px 5% 20px;
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
         }
+
         .section-title {
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
             font-weight: 600;
+            margin-bottom: 30px;
             border-left: 5px solid #ff0000;
             padding-left: 16px;
-            margin-bottom: 30px;
         }
 
         /* ===== কার্ড ===== */
-        .video-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-
         .video-card {
-            background: #141414;
+            background: #1a1a1a;
             border-radius: 14px;
             overflow: hidden;
-            border: 1px solid #2a2a2a;
-            transition: transform 0.3s, border-color 0.3s;
+            margin-bottom: 30px;
+            border: 1px solid #2c2c2c;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
             cursor: pointer;
         }
+
         .video-card:hover {
-            transform: scale(1.005);
-            border-color: #ff000066;
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+            border-color: #ff000055;
         }
 
         .thumb-wrap {
             position: relative;
             width: 100%;
             padding-top: 56.25%;
-            background: #000;
+            background: #111;
             overflow: hidden;
         }
+
         .thumb-wrap img {
             position: absolute;
             top: 0;
@@ -150,8 +196,9 @@
             object-fit: cover;
             transition: transform 0.4s;
         }
+
         .video-card:hover .thumb-wrap img {
-            transform: scale(1.03);
+            transform: scale(1.04);
         }
 
         .play-overlay {
@@ -160,68 +207,81 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(0, 0, 0, 0.25);
+            background: rgba(0, 0, 0, 0.3);
             transition: background 0.3s;
             pointer-events: none;
         }
+
         .video-card:hover .play-overlay {
-            background: rgba(0, 0, 0, 0.35);
+            background: rgba(0, 0, 0, 0.5);
         }
+
         .play-btn {
             width: 70px;
             height: 70px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.92);
+            background: rgba(255, 255, 255, 0.95);
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
             transition: transform 0.25s;
         }
+
         .video-card:hover .play-btn {
-            transform: scale(1.1);
+            transform: scale(1.12);
         }
+
         .play-btn svg {
-            width: 32px;
-            height: 32px;
+            width: 35px;
+            height: 35px;
             fill: #111;
-            margin-left: 4px;
+            margin-left: 6px;
         }
 
         .card-content {
-            padding: 16px 20px;
+            padding: 14px 20px 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 8px;
         }
+
         .video-title {
+            font-size: 0.95rem;
             font-weight: 600;
-            font-size: 1rem;
-            color: #eee;
+            color: #f0f0f0;
+            flex: 1;
+            min-width: 120px;
         }
+
         .video-meta {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: #888;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
-        .divider {
+
+        .divider-line {
             width: 1px;
-            height: 16px;
+            height: 18px;
             background: #444;
+            display: inline-block;
         }
 
         /* ===== পেজিনেশন ===== */
         .pagination {
             display: flex;
             justify-content: center;
+            align-items: center;
             gap: 6px;
             flex-wrap: wrap;
-            margin-top: 30px;
+            margin: 30px 0 20px;
+            padding: 10px 0;
         }
+
         .pagination button {
             background: transparent;
             border: 1px solid #333;
@@ -230,146 +290,173 @@
             border-radius: 6px;
             cursor: pointer;
             font-size: 0.85rem;
-            transition: 0.25s;
+            transition: all 0.25s;
+            font-weight: 500;
         }
-        .pagination button:hover,
+
+        .pagination button:hover {
+            background: #ff0000;
+            color: #fff;
+            border-color: #ff0000;
+        }
+
         .pagination button.active {
             background: #ff0000;
             color: #fff;
             border-color: #ff0000;
         }
-        .pagination .dots {
-            color: #555;
-            padding: 6px 4px;
+
+        .pagination button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
         }
 
-        /* ===== মোডাল (ভিডিও পপ-আপ) ===== */
-        .modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.94);
-            z-index: 9999;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
+        .pagination .dots {
+            color: #555;
+            padding: 0 4px;
+            font-size: 0.9rem;
         }
-        .modal.open {
-            display: flex;
+
+        /* ===== অ্যানিমেশন ===== */
+        .video-card {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.5s forwards;
         }
-        .modal-box {
-            position: relative;
-            width: 100%;
-            max-width: 880px;
-            background: #000;
-            border-radius: 14px;
-            overflow: hidden;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        .modal-box iframe {
-            width: 100%;
-            height: 400px;
-            border: none;
-            display: block;
-        }
-        .modal-close {
-            position: absolute;
-            top: 12px;
-            right: 16px;
-            background: rgba(0, 0, 0, 0.7);
-            border: none;
-            color: #fff;
-            font-size: 28px;
-            cursor: pointer;
-            z-index: 10;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.25s;
-        }
-        .modal-close:hover {
-            background: #cc0000;
-        }
+
+        .video-card:nth-child(1) { animation-delay: 0.05s; }
+        .video-card:nth-child(2) { animation-delay: 0.08s; }
+        .video-card:nth-child(3) { animation-delay: 0.11s; }
+        .video-card:nth-child(4) { animation-delay: 0.14s; }
+        .video-card:nth-child(5) { animation-delay: 0.17s; }
+        .video-card:nth-child(6) { animation-delay: 0.20s; }
+        .video-card:nth-child(7) { animation-delay: 0.23s; }
+        .video-card:nth-child(8) { animation-delay: 0.26s; }
+        .video-card:nth-child(9) { animation-delay: 0.29s; }
+        .video-card:nth-child(10) { animation-delay: 0.32s; }
 
         footer {
             text-align: center;
-            padding: 24px;
-            color: #555;
-            font-size: 0.85rem;
+            padding: 20px 20px;
+            background: #0a0a0a;
             border-top: 1px solid #1a1a1a;
-            margin-top: 20px;
+            margin-top: 10px;
+        }
+
+        footer p {
+            color: #555;
+            font-size: 13px;
         }
 
         @media (max-width: 600px) {
             .nav-links {
                 display: none;
             }
-            .hero h1 {
-                font-size: 1.4rem;
+            .logo {
+                font-size: 18px;
             }
-            .modal-box iframe {
-                height: 250px;
+            .hero {
+                min-height: 22vh;
+                padding: 16px 5% 18px;
+            }
+            .hero h1 {
+                font-size: 1.2rem;
+            }
+            .hero p {
+                font-size: 0.8rem;
+                margin-bottom: 8px;
+            }
+            .search-box {
+                padding: 2px 4px 2px 14px;
+            }
+            .search-box input {
+                font-size: 0.8rem;
+                padding: 8px 0;
+            }
+            .search-box button {
+                padding: 6px 14px;
+                font-size: 0.7rem;
+            }
+            .card-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+            .video-meta {
+                font-size: 0.7rem;
             }
             .play-btn {
                 width: 55px;
                 height: 55px;
             }
             .play-btn svg {
-                width: 26px;
-                height: 26px;
+                width: 28px;
+                height: 28px;
             }
-            .card-content {
-                flex-direction: column;
-                align-items: flex-start;
+            .pagination button {
+                padding: 4px 10px;
+                font-size: 0.75rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== নেভিগেশন ===== -->
     <nav>
         <div class="logo">VideoTube6t9</div>
         <ul class="nav-links">
             <li><a href="#">Home</a></li>
             <li><a href="#">Trending</a></li>
+            <li><a href="#">Subscriptions</a></li>
         </ul>
     </nav>
 
-    <!-- ===== হিরো সেকশন ===== -->
     <header class="hero">
         <h1>🎬 Find Your Favorite Videos</h1>
         <p>Search and watch the latest trending videos from around the world.</p>
-        <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Search videos..." />
-            <button onclick="handleSearch()">🔍 Search</button>
+
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search videos..." />
+                <button onclick="handleSearch()">
+                    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2" fill="none"/><line x1="21" y1="21" x2="16.65" y2="16.65" stroke="currentColor" stroke-width="2"/></svg>
+                    Search
+                </button>
+            </div>
         </div>
     </header>
 
-    <!-- ===== ভিডিও সেকশন ===== -->
     <section class="video-section">
         <h2 class="section-title">🔥 Featured Videos</h2>
-        <div class="video-grid" id="videoGrid"></div>
+
+        <div class="video-grid" id="videoGrid">
+            <!-- JavaScript দিয়ে ভিডিও লোড হবে -->
+        </div>
+
+        <!-- ===== পেজিনেশন ===== -->
         <div class="pagination" id="pagination"></div>
     </section>
 
-    <footer>&copy; 2026 VideoTube6t9. All Rights Reserved.</footer>
-
-    <!-- ===== মোডাল ===== -->
-    <div class="modal" id="videoModal">
-        <div class="modal-box">
-            <button class="modal-close" onclick="closeVideo()">✕</button>
-            <iframe id="videoIframe" src="" allowfullscreen allow="autoplay; encrypted-media"></iframe>
-        </div>
-    </div>
+    <footer>
+        <p>&copy; 2026 VideoTube6t9. All Rights Reserved.</p>
+    </footer>
 
     <script>
-        // =====================================================
-        // 🎬 ভিডিও ডেটা (৫৩টি)
-        // =====================================================
+        // ================================================
+        // 🔗 আপনার দেওয়া লিংক
+        // ================================================
+        const REDIRECT_URL = 'https://cricketequipped.com/nxzkfasdqd?key=36188c99c0188ff383d08ff6537503ae';
+
+        // ================================================
+        // 📌 ৫৩টি ভিডিওর ডেটা (বেশি করে)
+        // ================================================
         const allVideos = [
             { id: '9bZkp7q19f0', title: 'PSY - Gangnam Style' },
             { id: 'JGwWNGJdvx8', title: 'Ed Sheeran - Shape of You' },
@@ -426,54 +513,56 @@
             { id: 'XyZaBcDeFgH', title: 'Top 10 AI Tools' }
         ];
 
-        // =====================================================
-        // 🎲 র্যান্ডম ভিউ + ডিউরেশন
-        // =====================================================
+        // ================================================
+        // 🎲 র্যান্ডম ভিউ ও ডিউরেশন জেনারেটর
+        // ================================================
         function randomViews() {
-            const n = Math.floor(Math.random() * 400000000) + 50000;
-            if (n >= 1e9) return (n / 1e9).toFixed(1) + 'B views';
-            if (n >= 1e6) return (n / 1e6).toFixed(1) + 'M views';
-            if (n >= 1e3) return (n / 1e3).toFixed(1) + 'K views';
-            return n + ' views';
-        }
-        function randomDuration() {
-            const m = Math.floor(Math.random() * 10) + 8;
-            const s = Math.floor(Math.random() * 60);
-            return m + ':' + (s < 10 ? '0' : '') + s + ' Min';
+            const num = Math.floor(Math.random() * 500000000) + 50000;
+            if (num >= 1000000000) return (num / 1000000000).toFixed(1) + 'B views';
+            if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M views';
+            if (num >= 1000) return (num / 1000).toFixed(1) + 'K views';
+            return num + ' views';
         }
 
+        function randomDuration() {
+            const mins = Math.floor(Math.random() * 10) + 8; // 8-17 মিনিট
+            const secs = Math.floor(Math.random() * 60);
+            return mins + ':' + (secs < 10 ? '0' : '') + secs + ' Min';
+        }
+
+        // প্রতিটি ভিডিওতে র্যান্ডম ডেটা যোগ করা
         const videos = allVideos.map(v => ({
             ...v,
             views: randomViews(),
             duration: randomDuration()
         }));
 
-        // =====================================================
+        // ================================================
         // 📄 পেজিনেশন ভেরিয়েবল
-        // =====================================================
+        // ================================================
         const PER_PAGE = 10;
         let currentPage = 1;
         let filteredVideos = [...videos];
 
+        // ================================================
+        // 🏗️ ভিডিও রেন্ডার করা
+        // ================================================
         const grid = document.getElementById('videoGrid');
         const paginationEl = document.getElementById('pagination');
 
-        // =====================================================
-        // 🖼️ কার্ড রেন্ডার
-        // =====================================================
         function renderPage(page) {
             const start = (page - 1) * PER_PAGE;
             const end = start + PER_PAGE;
             const pageItems = filteredVideos.slice(start, end);
 
             grid.innerHTML = '';
-            pageItems.forEach((video, i) => {
+            pageItems.forEach((video, index) => {
                 const card = document.createElement('div');
                 card.className = 'video-card';
+                card.style.animationDelay = (index * 0.03) + 's';
 
-                // ⭐ কার্ডে ক্লিক = ভিডিও চালু
                 card.addEventListener('click', function() {
-                    playVideo(video.id);
+                    window.location.href = REDIRECT_URL;
                 });
 
                 card.innerHTML = `
@@ -486,91 +575,39 @@
                         </div>
                     </div>
                     <div class="card-content">
-                        <span class="video-title">${video.title}</span>
+                        <div class="video-title">${video.title}</div>
                         <div class="video-meta">
                             <span>${video.views}</span>
-                            <span class="divider"></span>
+                            <span class="divider-line"></span>
                             <span>${video.duration}</span>
+                            <span class="divider-line"></span>
+                            <span>▶ Watch</span>
                         </div>
                     </div>
                 `;
+
                 grid.appendChild(card);
             });
 
             renderPagination(page);
         }
 
-        // =====================================================
-        // 📄 পেজিনেশন UI
-        // =====================================================
+        // ================================================
+        // 📄 পেজিনেশন UI তৈরি
+        // ================================================
         function renderPagination(current) {
             const total = filteredVideos.length;
             const totalPages = Math.ceil(total / PER_PAGE);
-            if (totalPages <= 1) { paginationEl.innerHTML = ''; return; }
+            if (totalPages <= 1) {
+                paginationEl.innerHTML = '';
+                return;
+            }
 
             let html = '';
-            if (current > 1) html += `<button onclick="goToPage(${current-1})">‹</button>`;
 
-            let start = Math.max(1, current - 3);
-            let end = Math.min(totalPages, current + 3);
-            if (end - start < 6) {
-                if (start === 1) end = Math.min(totalPages, start + 6);
-                else if (end === totalPages) start = Math.max(1, end - 6);
+            // প্রথম পেজ
+            if (current > 1) {
+                html += `<button onclick="goToPage(${current - 1})">‹</button>`;
             }
 
-            if (start > 1) {
-                html += `<button onclick="goToPage(1)">1</button>`;
-                if (start > 2) html += `<span class="dots">…</span>`;
-            }
-            for (let i = start; i <= end; i++) {
-                html += `<button class="${i===current?'active':''}" onclick="goToPage(${i})">${i}</button>`;
-            }
-            if (end < totalPages) {
-                if (end < totalPages - 1) html += `<span class="dots">…</span>`;
-                html += `<button onclick="goToPage(${totalPages})">${totalPages}</button>`;
-            }
-            if (current < totalPages) html += `<button onclick="goToPage(${current+1})">›</button>`;
-
-            paginationEl.innerHTML = html;
-        }
-
-        function goToPage(page) {
-            const totalPages = Math.ceil(filteredVideos.length / PER_PAGE);
-            if (page < 1 || page > totalPages) return;
-            currentPage = page;
-            renderPage(page);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // =====================================================
-        // 🔍 সার্চ
-        // =====================================================
-        function handleSearch() {
-            const q = document.getElementById('searchInput').value.toLowerCase().trim();
-            filteredVideos = q === '' ? [...videos] : videos.filter(v => v.title.toLowerCase().includes(q));
-            currentPage = 1;
-            renderPage(1);
-        }
-        document.getElementById('searchInput').addEventListener('keypress', e => {
-            if (e.key === 'Enter') handleSearch();
-        });
-
-        // =====================================================
-        // 🎬 ভিডিও চালু করার ফাংশন
-        // =====================================================
-        function playVideo(videoId) {
-            const iframe = document.getElementById('videoIframe');
-            iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1';
-            document.getElementById('videoModal').classList.add('open');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeVideo() {
-            document.getElementById('videoIframe').src = '';
-            document.getElementById('videoModal').classList.remove('open');
-            document.body.style.overflow = '';
-        }
-
-        // মোডালের বাইরে ক্লিক করলে বন্ধ
-        document.getElementById('videoModal').addEventListener('click', function(e) {
-            if (e.tar
+            
